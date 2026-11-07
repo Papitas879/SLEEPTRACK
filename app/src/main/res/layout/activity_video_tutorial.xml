@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_tutorial"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0F1C">
+
+    <VideoView
+        android:id="@+id/vv_tutorial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical|end"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/btn_saltar_tutorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill_dark"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Saltar tutorial  ›"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="24dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_repetir_tutorial"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_marginEnd="12dp"
+            android:text="↺ Repetir"
+            android:textColor="#A5B4FC"
+            app:cornerRadius="16dp"
+            app:strokeColor="#2A3654" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_continuar_tutorial"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:backgroundTint="#5B55FE"
+            android:text="Comenzar registro  →"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
+    </LinearLayout>
+
+</RelativeLayout>

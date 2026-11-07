@@ -47,7 +47,7 @@ public class BienvenidaActivity extends AppCompatActivity {
 
         if (tvComenzar != null) {
             tvComenzar.setOnClickListener(v -> {
-                Intent intent = new Intent(BienvenidaActivity.this, CrearPerfilActivity.class);
+                Intent intent = new Intent(BienvenidaActivity.this, VideoTutorialActivity.class);
                 startActivity(intent);
             });
         }

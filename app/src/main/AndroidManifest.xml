@@ -26,6 +26,10 @@
         </activity>
 
         <activity
+            android:name=".VideoTutorialActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".CrearPerfilActivity"
             android:exported="false" />
 
