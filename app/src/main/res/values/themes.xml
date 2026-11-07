@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme conforming to Apple HIG / Modern Material 3. -->
+    <style name="Base.Theme.SLEEPTRACKAPP" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_subtle</item>
+        <item name="colorOnPrimaryContainer">@color/primary</item>
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorOnSecondary">@color/bg_root</item>
+        
+        <!-- System Windows & Surfaces -->
+        <item name="android:windowBackground">@color/bg_root</item>
+        <item name="android:statusBarColor">@color/bg_root</item>
+        <item name="android:navigationBarColor">@color/bg_root</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Bottom Navigation Unified Styling (Apple HIG Active Pill) -->
+        <item name="bottomNavigationStyle">@style/Widget.SleepTrack.BottomNavigationView</item>
+    </style>
+
+    <style name="Theme.SLEEPTRACKAPP" parent="Base.Theme.SLEEPTRACKAPP" />
+
+    <!-- Unified Bottom Navigation View Style -->
+    <style name="Widget.SleepTrack.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/Widget.SleepTrack.BottomNavigationView.ActiveIndicator</item>
+        <item name="itemIconTint">@color/nav_item_color_selector</item>
+        <item name="itemTextColor">@color/nav_item_color_selector</item>
+        <item name="backgroundTint">@color/card_surface</item>
+        <item name="elevation">8dp</item>
+    </style>
+
+    <!-- Apple HIG Rounded Pill Active Indicator -->
+    <style name="Widget.SleepTrack.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primary_subtle</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.SleepTrack.Pill</item>
+        <item name="android:width">60dp</item>
+        <item name="android:height">32dp</item>
+    </style>
+
+    <style name="ShapeAppearance.SleepTrack.Pill" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>

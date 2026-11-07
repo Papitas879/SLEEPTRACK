@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="edades">
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+    </string-array>
+
+    <string-array name="universidades">
+        <item>Universidad Privada del Norte (UPN)</item>
+        <item>Universidad Nacional Mayor de San Marcos (UNMSM)</item>
+        <item>Pontificia Universidad Católica del Perú (PUCP)</item>
+        <item>Universidad Peruana de Ciencias Aplicadas (UPC)</item>
+        <item>Universidad de Lima (ULima)</item>
+        <item>Universidad Nacional de Ingeniería (UNI)</item>
+        <item>Universidad San Ignacio de Loyola (USIL)</item>
+        <item>Universidad del Pacífico (UP)</item>
+        <item>Universidad Científica del Sur (UCSUR)</item>
+        <item>Universidad Nacional Agraria La Molina (UNALM)</item>
+        <item>Universidad Nacional Federico Villarreal (UNFV)</item>
+        <item>Universidad Tecnológica del Perú (UTP)</item>
+        <item>Universidad Ricardo Palma (URP)</item>
+        <item>Universidad San Martín de Porres (USMP)</item>
+        <item>Universidad de Piura (UDEP)</item>
+    </string-array>
+
+    <string-array name="carreras">
+        <item>Ingeniería de Sistemas</item>
+        <item>Ingeniería de Software</item>
+        <item>Medicina Humana</item>
+        <item>Arquitectura</item>
+        <item>Odontología</item>
+        <item>Diseño Gráfico</item>
+        <item>Animación 3D y Efectos Visuales</item>
+        <item>Ingeniería Civil</item>
+        <item>Derecho</item>
+        <item>Enfermería</item>
+        <item>Ciencias de la Comunicación</item>
+        <item>Contabilidad</item>
+        <item>Administración de Empresas</item>
+        <item>Marketing y Publicidad</item>
+        <item>Ingeniería Industrial</item>
+        <item>Psicología</item>
+        <item>Traducción e Interpretación</item>
+        <item>Ingeniería Mecatrónica</item>
+        <item>Gastronomía</item>
+        <item>Economía</item>
+        <item>Ciencias Políticas</item>
+        <item>Biología</item>
+        <item>Nutrición y Dietética</item>
+    </string-array>
+</resources>

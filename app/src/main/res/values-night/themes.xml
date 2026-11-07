@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme for Night mode. -->
+    <style name="Base.Theme.SLEEPTRACKAPP" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_subtle</item>
+        <item name="colorOnPrimaryContainer">@color/primary_light</item>
+        <item name="colorSecondary">@color/primary_light</item>
+        <item name="colorOnSecondary">@color/bg_root</item>
+        
+        <!-- System Windows & Surfaces -->
+        <item name="android:windowBackground">@color/bg_root</item>
+        <item name="android:statusBarColor">@color/bg_root</item>
+        <item name="android:navigationBarColor">@color/bg_root</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_root">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/iv_hu15_volver"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volver"
+                android:textColor="@color/primary"
+                app:icon="@drawable/ic_chevron_left"
+                app:iconTint="@color/primary"
+                app:rippleColor="@color/primary_subtle" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- Botón para ver Vista Calendario Mensual -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_hu15_ir_calendario"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="📅 Calendario"
+                android:textSize="12sp"
+                android:textColor="@color/primary"
+                android:backgroundTint="@color/primary_subtle"
+                app:cornerRadius="12dp"
+                app:strokeWidth="0dp" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="48dp">
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/tv_hu15_titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Análisis Semanal"
+                    android:textColor="@color/text_primary"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <!-- Selector de Semana -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/btn_semana_anterior"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_chevron_left"
+                            app:tint="@color/primary"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:contentDescription="Anterior Semana"/>
+
+                        <TextView
+                            android:id="@+id/tv_hu15_semana_val"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Semana actual"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textAlignment="center" />
+
+                        <ImageView
+                            android:id="@+id/btn_semana_siguiente"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="@color/primary"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:contentDescription="Siguiente Semana"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- GRÁFICO DE BARRAS SEMANAL ESTILO APPLE HEALTH (HU-15) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Horas de Descanso"
+                                android:textColor="@color/text_muted"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_hu15_meta_indicador"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meta: 8h"
+                                android:textColor="@color/primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:background="@drawable/bg_chip_indigo"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp" />
+                        </LinearLayout>
+
+                        <!-- Contenedor de las 7 barras (Lun - Dom) -->
+                        <LinearLayout
+                            android:id="@+id/ll_barras_contenedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:orientation="horizontal"
+                            android:gravity="bottom"
+                            android:weightSum="7">
+
+                            <!-- Día 1: Lun -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_0"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_0"
+                                    android:layout_width="20dp"
+                                    android:layout_height="90dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_0"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="L"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 2: Mar -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="6.5h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_1"
+                                    android:layout_width="20dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="M"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 3: Mié -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="8h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_2"
+                                    android:layout_width="20dp"
+                                    android:layout_height="110dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="M"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 4: Jue -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7.2h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_3"
+                                    android:layout_width="20dp"
+                                    android:layout_height="95dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="J"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 5: Vie -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="8.5h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_4"
+                                    android:layout_width="20dp"
+                                    android:layout_height="120dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="V"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 6: Sáb -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="6h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_5"
+                                    android:layout_width="20dp"
+                                    android:layout_height="75dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="S"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+
+                            <!-- Día 7: Dom -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom|center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_bar_val_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7h"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginBottom="4dp" />
+
+                                <View
+                                    android:id="@+id/v_bar_6"
+                                    android:layout_width="20dp"
+                                    android:layout_height="90dp"
+                                    android:background="@drawable/bg_button_primary" />
+
+                                <TextView
+                                    android:id="@+id/tv_bar_label_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="D"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    android:layout_marginTop="6dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Promedio y Cumplimiento -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:clipToPadding="false">
+
+                    <!-- Promedio -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="@color/card_surface"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="18dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📊"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/tv_hu15_promedio_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="6h 45m"
+                                android:textColor="@color/text_primary"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_hu15_dias_medidos_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Promedio por noche\nen días registrados"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp"
+                                android:textAlignment="center"
+                                android:lineSpacingExtra="2dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Cumplimiento -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="@color/success_bg"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/success_stroke">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="18dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎯"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/tv_hu15_cumplimiento_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="4 de 7"
+                                android:textColor="@color/success"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Noches cumplieron\nla meta establecida"
+                                android:textColor="@color/success"
+                                android:textSize="11sp"
+                                android:textAlignment="center"
+                                android:lineSpacingExtra="2dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- Diferencia Fin de Semana (HU-16) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="HÁBITOS HORARIOS"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.04" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Días de Semana"
+                                android:textColor="@color/text_muted"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tv_hu16_sem_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="~23:30 a 07:15"
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="14dp"
+                            android:background="@color/divider" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Fin de Semana"
+                                android:textColor="@color/text_muted"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tv_hu16_finde_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="~01:00 a 09:30"
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_hu16_irregularidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_chip_indigo"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⚠️"
+                                android:textSize="16sp"
+                                android:layout_marginEnd="8dp"/>
+
+                            <TextView
+                                android:id="@+id/tv_hu16_irregularidad_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Irregularidad moderada detectada. Intenta no variar más de 1 hora los fines de semana."
+                                android:textColor="@color/primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/card_surface"
+        app:itemTextColor="@color/nav_item_color_selector"
+        app:itemIconTint="@color/nav_item_color_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>

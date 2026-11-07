@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base System Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- SleepTrack Nocturnal Theme - Background Hierarchy -->
+    <!-- Nivel 1: Fondo profundo (Emparejado exactamente con los bordes del logo) -->
+    <color name="bg_root">#0A0632</color>
+    <color name="bg_gradient_start">#191262</color>
+    <color name="bg_gradient_center">#0E0D4C</color>
+    <color name="bg_gradient_end">#0A0632</color>
+
+    <!-- Nivel 2: Tarjetas y Superficies Principales -->
+    <color name="card_surface">#15192C</color>
+    <color name="card_stroke">#222842</color>
+
+    <!-- Nivel 3: Contenedores Elevados / Pills / Inputs / Chips (más claro) -->
+    <color name="card_surface_elevated">#1D223B</color>
+    <color name="card_stroke_elevated">#2D3558</color>
+
+    <!-- SleepTrack Brand Accents -->
+    <color name="primary">#5B55FE</color>
+    <color name="primary_variant">#4841E2</color>
+    <color name="primary_dark">#181A38</color>
+    <color name="primary_light">#9EA9FF</color>
+    <color name="primary_subtle">#23264E</color>
+
+    <!-- Accent / Highlights -->
+    <color name="accent">#FFD166</color>
+    <color name="accent_star">#FFCA28</color>
+    <color name="accent_mint">#00E5A3</color>
+
+    <!-- Text Colors (Jerarquía clara en fondo oscuro) -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#9EA9FF</color>
+    <color name="text_muted">#7E88A6</color>
+    <color name="text_subdued">#525A77</color>
+
+    <!-- Semantic Colors (Modo Oscuro Sofisticado) -->
+    <!-- Success / Mint -->
+    <color name="success">#00E5A3</color>
+    <color name="success_bg">#102B25</color>
+    <color name="success_stroke">#1B5244</color>
+    <color name="success_light">#102B25</color> <!-- Updated from light mode paste -->
+
+    <!-- Warning / Amber -->
+    <color name="warning">#FFB74D</color>
+    <color name="warning_bg">#2A2312</color>
+    <color name="warning_stroke">#594519</color>
+    <color name="warning_light">#2A2312</color> <!-- Updated from light mode paste -->
+
+    <!-- Error / Danger / Finish -->
+    <color name="error">#FF536A</color>
+    <color name="error_bg">#2B131C</color>
+    <color name="error_stroke">#5A2333</color>
+    <color name="error_light">#2B131C</color> <!-- Updated from light mode paste -->
+
+    <!-- UI Elements -->
+    <color name="divider">#222842</color>
+    <color name="chip_bg">#1D223B</color>
+    <color name="chip_border">#2D3558</color>
+    <color name="chip_text">#9EA9FF</color>
+
+    <!-- Legacy Compatibility Aliases -->
+    <color name="background_light">#0B0D19</color>
+    <color name="background_dark">#0B0D19</color>
+    <color name="primary_background">#0B0D19</color>
+    <color name="card_light">#15192C</color>
+    <color name="card_dark">#15192C</color>
+    <color name="text_primary_light">#FFFFFF</color>
+    <color name="text_secondary_light">#9EA9FF</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#7E88A6</color>
+
+    <color name="moon_glow_start">#604841E2</color>
+    <color name="moon_glow_center">#251B1272</color>
+    <color name="faint_glow_start">#405B55FE</color>
+    <color name="faint_glow_center">#155B55FE</color>
+</resources>

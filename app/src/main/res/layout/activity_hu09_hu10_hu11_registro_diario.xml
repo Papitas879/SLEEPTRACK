@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_root">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:orientation="vertical">
+
+        <!-- Top Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:paddingHorizontal="24dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/iv_hu09_volver"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-12dp"
+                android:text="Volver"
+                android:textColor="@color/primary"
+                app:icon="@drawable/ic_chevron_left"
+                app:iconTint="@color/primary"
+                app:rippleColor="@color/primary_subtle" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registro Diario"
+                    android:textColor="@color/text_primary"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tv_hu09_fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Cuéntanos cómo descansaste anoche"
+                    android:textColor="@color/text_muted"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- CALIDAD DEL DESCANSO PERCIBIDA (HU-09) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CALIDAD DEL DESCANSO PERCIBIDA"
+                            android:textColor="@color/primary"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:letterSpacing="0.04"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_hu09_calidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="5">
+
+                            <!-- Option 1: Muy mala -->
+                            <LinearLayout
+                                android:id="@+id/opt_calidad_1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_c1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="😫"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_c1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Muy\nmala"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 2: Mala -->
+                            <LinearLayout
+                                android:id="@+id/opt_calidad_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_c2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🙁"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_c2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Mala"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 3: Regular (Selected by default) -->
+                            <LinearLayout
+                                android:id="@+id/opt_calidad_3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_selected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_c3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="😐"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_c3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Regular"
+                                    android:textColor="@color/primary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 4: Buena -->
+                            <LinearLayout
+                                android:id="@+id/opt_calidad_4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_c4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🙂"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_c4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Buena"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 5: Excelente -->
+                            <LinearLayout
+                                android:id="@+id/opt_calidad_5"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_c5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🤩"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_c5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Excelente"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- NIVEL DE ENERGÍA AL DESPERTAR -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NIVEL DE ENERGÍA AL DESPERTAR"
+                            android:textColor="@color/primary"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:letterSpacing="0.04"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_hu09_energia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="5">
+
+                            <!-- Option 1: Agotado -->
+                            <LinearLayout
+                                android:id="@+id/opt_energia_1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_e1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🪫"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_e1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Agotado"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 2: Con sueño -->
+                            <LinearLayout
+                                android:id="@+id/opt_energia_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_e2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🥱"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_e2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Con\nsueño"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 3: Normal (Selected by default) -->
+                            <LinearLayout
+                                android:id="@+id/opt_energia_3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_selected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_e3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🔋"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_e3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Normal"
+                                    android:textColor="@color/primary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 4: Con energía -->
+                            <LinearLayout
+                                android:id="@+id/opt_energia_4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_e4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="⚡"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_e4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Activo"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Option 5: Al 100% -->
+                            <LinearLayout
+                                android:id="@+id/opt_energia_5"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@drawable/bg_option_unselected"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingVertical="14dp">
+                                <TextView
+                                    android:id="@+id/tv_icono_e5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🚀"
+                                    android:textSize="26sp" />
+                                <TextView
+                                    android:id="@+id/tv_texto_e5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:gravity="center"
+                                    android:text="Al 100%"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- INTERRUPCIONES RECORDADAS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="¿Recordaste interrupciones durante la noche?"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="16dp"/>
+
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:columnCount="6"
+                            android:useDefaultMargins="false">
+
+                            <TextView android:id="@+id/opt_int_0" android:text="0" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_unselected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                            <TextView android:id="@+id/opt_int_1" android:text="1" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_unselected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                            <TextView android:id="@+id/opt_int_2" android:text="2" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_unselected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                            <TextView android:id="@+id/opt_int_3" android:text="3" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_selected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                            <TextView android:id="@+id/opt_int_4" android:text="4" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_unselected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                            <TextView android:id="@+id/opt_int_5" android:text="5+" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="48dp" android:gravity="center" android:background="@drawable/bg_option_unselected" android:textSize="16sp" android:textColor="@color/primary" android:textStyle="bold" android:layout_margin="3dp"/>
+                        </GridLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ESTRÉS ACADÉMICO -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estrés académico de ayer"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView android:id="@+id/opt_estres_1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:gravity="center" android:text="🧘‍♂️ Bajo" android:background="@drawable/bg_option_unselected" android:textColor="@color/text_muted" android:textStyle="bold" android:layout_marginEnd="6dp"/>
+                            <TextView android:id="@+id/opt_estres_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:gravity="center" android:text="😐 Medio" android:background="@drawable/bg_option_selected" android:textColor="@color/primary" android:textStyle="bold" android:layout_marginEnd="6dp"/>
+                            <TextView android:id="@+id/opt_estres_3" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:gravity="center" android:text="🤯 Alto" android:background="@drawable/bg_option_unselected" android:textColor="@color/text_muted" android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- CONSUMO DE CAFEÍNA AYER -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="☕  Consumo de cafeína ayer"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Option 1: No consumí -->
+                            <TextView
+                                android:id="@+id/opt_caf_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="🚫  No consumí cafeína"
+                                android:background="@drawable/bg_option_selected"
+                                android:textColor="@color/primary"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"/>
+
+                            <!-- Option 2: Sí, una vez -->
+                            <TextView
+                                android:id="@+id/opt_caf_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="☕  1 taza / café"
+                                android:background="@drawable/bg_option_unselected"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"/>
+
+                            <!-- Option 3: Sí, más de una vez -->
+                            <TextView
+                                android:id="@+id/opt_caf_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="☕☕  2 o más tazas"
+                                android:background="@drawable/bg_option_unselected"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- USO DE PANTALLAS ANTES DE DORMIR -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📱  Uso de pantallas antes de dormir"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Option 1: Menos de 30 minutos -->
+                            <TextView
+                                android:id="@+id/opt_pan_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="✨  Menos de 30 minutos (Recomendado)"
+                                android:background="@drawable/bg_option_unselected"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"/>
+
+                            <!-- Option 2: 30 – 60 minutos (Selected) -->
+                            <TextView
+                                android:id="@+id/opt_pan_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="📱  30 – 60 minutos"
+                                android:background="@drawable/bg_option_selected"
+                                android:textColor="@color/primary"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"/>
+
+                            <!-- Option 3: Más de 60 minutos -->
+                            <TextView
+                                android:id="@+id/opt_pan_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="16dp"
+                                android:text="📺  Más de 60 minutos"
+                                android:background="@drawable/bg_option_unselected"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Guardar registro Button (HU-11) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_hu11_guardar"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_button_primary"
+                    app:backgroundTint="@null"
+                    android:text="Guardar registro"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:fontFamily="sans-serif-medium"
+                    app:cornerRadius="18dp"
+                    android:elevation="4dp"
+                    android:stateListAnimator="@null" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/card_surface"
+        app:itemIconTint="@color/nav_item_color_selector"
+        app:itemTextColor="@color/nav_item_color_selector"
+        app:itemRippleColor="@color/primary_subtle"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>
