@@ -13,7 +13,6 @@
         android:layout_above="@+id/bottom_navigation"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +47,6 @@
                 android:paddingHorizontal="24dp"
                 android:paddingBottom="48dp">
 
-                <!-- Title & Subtitle -->
                 <TextView
                     android:id="@+id/tv_hu23_titulo"
                     android:layout_width="wrap_content"
@@ -68,7 +66,6 @@
                     android:textColor="@color/text_muted"
                     android:textSize="14sp" />
 
-                <!-- Section 1: Privacidad y Almacenamiento -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,7 +76,6 @@
                     android:textStyle="bold"
                     android:letterSpacing="0.04" />
 
-                <!-- Local Storage Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,7 +145,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Sensor Protection Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -200,7 +195,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Screen Privacy Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -251,7 +245,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Section 2: Zona de Control / Peligro -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -262,7 +255,6 @@
                     android:textStyle="bold"
                     android:letterSpacing="0.04" />
 
-                <!-- Delete Records Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -318,7 +310,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Legal / Health disclaimer -->
                 <TextView
                     android:id="@+id/tv_hu23_aviso_pertenencia"
                     android:layout_width="match_parent"

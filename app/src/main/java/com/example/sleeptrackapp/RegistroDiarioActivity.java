@@ -26,7 +26,6 @@ public class RegistroDiarioActivity extends AppCompatActivity {
     TextView tvFecha;
     Button btnGuardar;
 
-    // Valores seleccionados por defecto
     private String calidadSeleccionada = "Regular";
     private String energiaSeleccionada = "Normal";
     private String interrupcionesSeleccionadas = "3";
@@ -143,7 +142,7 @@ public class RegistroDiarioActivity extends AppCompatActivity {
     private void configurarOpcionesEstres() {
         int[] ids = {R.id.opt_estres_1, R.id.opt_estres_2, R.id.opt_estres_3};
         String[] valores = {"Bajo", "Medio", "Alto"};
-        
+
         TextView[] views = new TextView[ids.length];
         for (int i = 0; i < ids.length; i++) {
             views[i] = findViewById(ids[i]);
@@ -164,7 +163,7 @@ public class RegistroDiarioActivity extends AppCompatActivity {
         int[] ids = {R.id.opt_caf_1, R.id.opt_caf_2, R.id.opt_caf_3};
         String[] textos = {"🚫  No consumí cafeína", "☕  1 taza / café", "☕☕  2 o más tazas"};
         String[] valores = {"No consumí", "Sí, una vez", "Sí, más de una vez"};
-        
+
         TextView[] views = new TextView[ids.length];
         for (int i = 0; i < ids.length; i++) {
             views[i] = findViewById(ids[i]);
@@ -183,7 +182,7 @@ public class RegistroDiarioActivity extends AppCompatActivity {
         int[] ids = {R.id.opt_pan_1, R.id.opt_pan_2, R.id.opt_pan_3};
         String[] textos = {"✨  Menos de 30 minutos (Recomendado)", "📱  30 – 60 minutos", "📺  Más de 60 minutos"};
         String[] valores = {"Menos de 30 minutos", "30 – 60 minutos", "Más de 60 minutos"};
-        
+
         TextView[] views = new TextView[ids.length];
         for (int i = 0; i < ids.length; i++) {
             views[i] = findViewById(ids[i]);
@@ -237,7 +236,7 @@ public class RegistroDiarioActivity extends AppCompatActivity {
             }
         }
     }
-    
+
     private void actualizarSeleccionOpcionesTexto(TextView[] todos, TextView seleccionado) {
         for (TextView view : todos) {
             if (view != null) {

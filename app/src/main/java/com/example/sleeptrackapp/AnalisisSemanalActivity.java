@@ -22,10 +22,6 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-/**
- * HU-15: Resumen semanal con gráficos de barras interactivos.
- * HU-16: Comparativa de horarios en semana vs. fin de semana y detección de irregularidades.
- */
 public class AnalisisSemanalActivity extends AppCompatActivity {
 
     View ivVolver, btnIrCalendario;
@@ -34,12 +30,11 @@ public class AnalisisSemanalActivity extends AppCompatActivity {
     TextView tvSemVal, tvFindeVal, tvIrregularidadMsg;
     View llIrregularidad;
 
-    // Elementos de las 7 barras (Lun - Dom)
     private View[] vBars = new View[7];
     private TextView[] tvBarVals = new TextView[7];
     private TextView[] tvBarLabels = new TextView[7];
 
-    private int offsetSemanas = 0; // 0 = actual, -1 = semana anterior
+    private int offsetSemanas = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +55,6 @@ public class AnalisisSemanalActivity extends AppCompatActivity {
         llIrregularidad = findViewById(R.id.ll_hu16_irregularidad);
         tvIrregularidadMsg = findViewById(R.id.tv_hu16_irregularidad_msg);
 
-        // Mapeo de vistas para las 7 barras
         for (int i = 0; i < 7; i++) {
             int barId = getResources().getIdentifier("v_bar_" + i, "id", getPackageName());
             int valId = getResources().getIdentifier("tv_bar_val_" + i, "id", getPackageName());
@@ -117,7 +111,7 @@ public class AnalisisSemanalActivity extends AppCompatActivity {
         String correo = prefs.getString("correo_usuario", "");
 
         if (correo.isEmpty()) {
-            // Datos de demostración offline
+
             aplicarDatosDemo();
             return;
         }
@@ -261,9 +255,8 @@ public class AnalisisSemanalActivity extends AppCompatActivity {
         float densidad = getResources().getDisplayMetrics().density;
         int maxPx = (int) (130 * densidad);
 
-        // Día actual de la semana (en demo marcar el viernes o hoy)
         java.util.Calendar cal = java.util.Calendar.getInstance();
-        int diaSem = (cal.get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7; // Lunes = 0, Domingo = 6
+        int diaSem = (cal.get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7;
 
         for (int i = 0; i < 7; i++) {
             if (i == diaSem && durMin > 0) {

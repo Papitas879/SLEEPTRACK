@@ -32,7 +32,6 @@
                     android:paddingTop="32dp"
                     android:paddingBottom="40dp">
 
-                <!-- Header Greeting -->
                 <TextView
                     android:id="@+id/tv_hu10_titulo"
                     android:layout_width="wrap_content"
@@ -53,7 +52,6 @@
                     android:textSize="15sp"
                     android:layout_marginBottom="20dp" />
 
-                <!-- Hero Card: 6h 42m & 89% cumplido -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +119,6 @@
                                 </LinearLayout>
                             </LinearLayout>
 
-                            <!-- Badge de Cumplimiento -->
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
@@ -156,14 +153,12 @@
                             </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
 
-                        <!-- Fila 3 Stats (Inicio, Despertar, Eficiencia) -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:weightSum="3">
 
-                            <!-- Inicio -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -199,7 +194,6 @@
                                     android:textSize="10sp" />
                             </LinearLayout>
 
-                            <!-- Despertar -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -235,7 +229,6 @@
                                     android:textSize="10sp" />
                             </LinearLayout>
 
-                            <!-- Eficiencia -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -275,7 +268,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Calidad & Interrupciones Row Card -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -283,7 +275,6 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <!-- Calidad percibida -->
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -335,7 +326,6 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Interrupciones posibles -->
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -388,7 +378,6 @@
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
-                <!-- Interacciones nocturnas con pantalla -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -439,7 +428,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Warning Banner Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -490,7 +478,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- BOTÓN PRINCIPAL: Iniciar monitoreo -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_iniciar_monitoreo"
                     android:layout_width="match_parent"
@@ -508,7 +495,6 @@
                     android:elevation="0dp"
                     android:stateListAnimator="@null" />
 
-                <!-- BOTONES SECUNDARIOS: Registrar cómo dormí & Ver gráficos -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

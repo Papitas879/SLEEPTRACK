@@ -24,11 +24,11 @@ $stmt = $conn->prepare("UPDATE cuentas SET hora_dormir = ?, hora_despertar = ?, 
 if ($stmt) {
     $stmt->bind_param("sssis", $hora_dormir, $hora_despertar, $meta_horas, $sensores_aceptados, $correo);
     if ($stmt->execute()) {
-        // Sincronizar tabla configuracion_descanso
-        $stmtConf = $conn->prepare("INSERT INTO configuracion_descanso 
-            (correo, hora_dormir, hora_despertar, meta_horas, sensores_aceptados) 
+
+        $stmtConf = $conn->prepare("INSERT INTO configuracion_descanso
+            (correo, hora_dormir, hora_despertar, meta_horas, sensores_aceptados)
             VALUES (?, ?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE 
+            ON DUPLICATE KEY UPDATE
                 hora_dormir = VALUES(hora_dormir),
                 hora_despertar = VALUES(hora_despertar),
                 meta_horas = VALUES(meta_horas),

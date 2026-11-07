@@ -12,11 +12,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-/**
- * HU-01: Conocer SleepTrack (Bienvenida)
- * Permite al estudiante conocer las funcionalidades de la aplicación e iniciar el registro o acceso local.
- * Si ya tiene una sesión iniciada, redirige directamente al Dashboard (ResumenDescansoActivity).
- */
 public class BienvenidaActivity extends AppCompatActivity {
 
     TextView tvAppName, tvTitulo, tvDesc, tvComenzar;
@@ -26,7 +21,6 @@ public class BienvenidaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Auto-login: Si el usuario ya inició sesión previamente, ir al Dashboard
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
         String correoGuardado = prefs.getString("correo_usuario", "");
         if (!correoGuardado.isEmpty()) {
@@ -45,14 +39,12 @@ public class BienvenidaActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enlace de vistas
         tvAppName = findViewById(R.id.tv_hu01_app_name);
         tvTitulo = findViewById(R.id.tv_hu01_titulo);
         tvDesc = findViewById(R.id.tv_hu01_desc);
         tvComenzar = findViewById(R.id.tv_hu01_comenzar);
         btnYaTengoCuenta = findViewById(R.id.btn_hu01_ya_tengo_cuenta);
 
-        // Eventos de navegación estilo iOS (transiciones limpias)
         if (tvComenzar != null) {
             tvComenzar.setOnClickListener(v -> {
                 Intent intent = new Intent(BienvenidaActivity.this, CrearPerfilActivity.class);

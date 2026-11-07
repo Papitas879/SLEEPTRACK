@@ -26,7 +26,7 @@ if ($stmt) {
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password_input, $row['password'])) {
-            unset($row['password']); // Nunca retornar el hash
+            unset($row['password']);
             echo json_encode(["status" => "success", "message" => "Inicio de sesión exitoso.", "user" => $row]);
         } else {
             echo json_encode(["status" => "error", "message" => "Contraseña incorrecta. Inténtalo de nuevo."]);

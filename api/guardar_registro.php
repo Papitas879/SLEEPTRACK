@@ -28,15 +28,15 @@ if (
     $pantallas = trim($data['pantallas']);
     $fecha = trim($data['fecha']);
 
-    $stmt = $conn->prepare("INSERT INTO registros_diarios 
+    $stmt = $conn->prepare("INSERT INTO registros_diarios
         (correo, calidad, energia, interrupciones, estres, cafeina, pantallas, fecha)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON DUPLICATE KEY UPDATE
-        calidad = VALUES(calidad), 
-        energia = VALUES(energia), 
+        calidad = VALUES(calidad),
+        energia = VALUES(energia),
         interrupciones = VALUES(interrupciones),
-        estres = VALUES(estres), 
-        cafeina = VALUES(cafeina), 
+        estres = VALUES(estres),
+        cafeina = VALUES(cafeina),
         pantallas = VALUES(pantallas)");
 
     if ($stmt) {
@@ -50,8 +50,7 @@ if (
                 }
             }
 
-            // Sincronizar en encuestas_diarias
-            $stmtEnc = $conn->prepare("INSERT INTO encuestas_diarias 
+            $stmtEnc = $conn->prepare("INSERT INTO encuestas_diarias
                 (correo, id_registro, fecha, calidad_percibida, nivel_energia, interrupciones, nivel_estres, consumo_cafeina, exposicion_pantallas)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($stmtEnc) {

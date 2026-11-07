@@ -12,7 +12,6 @@ $data = json_decode($json, true);
 if (!empty($data['correo'])) {
     $correo = trim($data['correo']);
 
-    // Obtener configuración del usuario
     $meta_horas = "8 horas";
     $hora_dormir = "23:00";
     $hora_despertar = "07:00";
@@ -44,7 +43,7 @@ if (!empty($data['correo'])) {
             echo json_encode(["status" => "success", "data" => $row]);
         } else {
             echo json_encode([
-                "status" => "empty", 
+                "status" => "empty",
                 "message" => "No hay registros cargados aún.",
                 "data" => [
                     "target_meta_horas" => $meta_horas,

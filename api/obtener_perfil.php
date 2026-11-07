@@ -38,11 +38,11 @@ if (!empty($data['correo'])) {
     $prom_eficiencia = 0;
     $prom_calidad = 0;
 
-    $stmtStats = $conn->prepare("SELECT 
-            COUNT(*) as total_noches, 
-            AVG(CASE WHEN duracion_minutos > 0 THEN duracion_minutos ELSE NULL END) as prom_minutos, 
-            AVG(CASE WHEN eficiencia > 0 THEN eficiencia ELSE NULL END) as prom_eficiencia, 
-            AVG(CASE WHEN calidad_porcentaje > 0 THEN calidad_porcentaje ELSE NULL END) as prom_calidad 
+    $stmtStats = $conn->prepare("SELECT
+            COUNT(*) as total_noches,
+            AVG(CASE WHEN duracion_minutos > 0 THEN duracion_minutos ELSE NULL END) as prom_minutos,
+            AVG(CASE WHEN eficiencia > 0 THEN eficiencia ELSE NULL END) as prom_eficiencia,
+            AVG(CASE WHEN calidad_porcentaje > 0 THEN calidad_porcentaje ELSE NULL END) as prom_calidad
         FROM registros_diarios WHERE correo = ?");
 
     if ($stmtStats) {
@@ -79,4 +79,3 @@ if (!empty($data['correo'])) {
 
 $conn->close();
 ?>
-

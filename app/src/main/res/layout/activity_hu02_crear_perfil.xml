@@ -52,7 +52,6 @@
             android:textColor="@color/text_muted"
             android:textSize="16sp" />
 
-        <!-- Datos Personales Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +67,6 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- Nombres -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,7 +90,6 @@
                     android:textSize="16sp"
                     android:inputType="textPersonName" />
 
-                <!-- Correo -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +113,6 @@
                     android:textSize="16sp"
                     android:inputType="textEmailAddress" />
 
-                <!-- Password -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,7 +136,6 @@
                     android:textSize="16sp"
                     android:inputType="textPassword" />
 
-                <!-- Fecha de nacimiento -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,7 +160,6 @@
                     android:clickable="true"
                     android:focusable="true" />
 
-                <!-- Universidad -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,7 +184,6 @@
                     android:clickable="true"
                     android:focusable="true" />
 
-                <!-- Carrera -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -15,7 +15,6 @@
         android:padding="26dp"
         android:gravity="center_horizontal">
 
-        <!-- Avatar Icon -->
         <FrameLayout
             android:layout_width="56dp"
             android:layout_height="56dp"

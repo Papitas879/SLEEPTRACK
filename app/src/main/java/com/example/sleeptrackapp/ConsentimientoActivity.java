@@ -40,11 +40,9 @@ public class ConsentimientoActivity extends AppCompatActivity {
                     sensoresAceptados = cbAcepto.isChecked();
                 }
 
-                // Guardar la preferencia en local
                 SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
                 prefs.edit().putBoolean("sensores_aceptados", sensoresAceptados).apply();
 
-                // Navegar a Configurar Descanso (HU-06)
                 Intent intent = new Intent(ConsentimientoActivity.this, ConfigurarDescansoActivity.class);
                 startActivity(intent);
                 finish();

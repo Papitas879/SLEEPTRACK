@@ -20,11 +20,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-/**
- * HU-23: Gestionar privacidad y eliminar registros.
- * Muestra las políticas de privacidad y procesamiento de sensores,
- * y permite eliminar el historial de sueño local y en el servidor MySQL de XAMPP.
- */
 public class PrivacidadDatosActivity extends AppCompatActivity {
 
     View ivVolver, btnEliminarRegistros;
@@ -42,22 +37,18 @@ public class PrivacidadDatosActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enlace de vistas
         ivVolver = findViewById(R.id.iv_hu23_volver);
         tvTitulo = findViewById(R.id.tv_hu23_titulo);
         btnEliminarRegistros = findViewById(R.id.ll_hu23_btn_eliminar);
 
-        // Volver atrás
         if (ivVolver != null) {
             ivVolver.setOnClickListener(v -> finish());
         }
 
-        // Diálogo de eliminación de registros
         if (btnEliminarRegistros != null) {
             btnEliminarRegistros.setOnClickListener(v -> mostrarDialogoEliminar());
         }
 
-        // Configuración fluida del BottomNavigationView con la pestaña Perfil
         BottomNavHelper.setup(this, R.id.nav_perfil);
     }
 
@@ -86,7 +77,6 @@ public class PrivacidadDatosActivity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
                 String correo = prefs.getString("correo_usuario", "");
 
-                // 1. Limpiar métricas locales de monitoreo en SharedPreferences
                 prefs.edit()
                         .remove("ultimo_monitoreo_inicio")
                         .remove("ultimo_monitoreo_fin")
@@ -98,7 +88,6 @@ public class PrivacidadDatosActivity extends AppCompatActivity {
                         .remove("ultima_hora_fin")
                         .apply();
 
-                // 2. Eliminar en el servidor MySQL mediante la API
                 if (!correo.isEmpty()) {
                     String url = "http://192.168.3.225/SLEEPTRACKAPP/api/eliminar_datos.php";
                     JSONObject payload = new JSONObject();

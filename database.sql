@@ -1,7 +1,6 @@
 CREATE DATABASE IF NOT EXISTS sleeptrack CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE sleeptrack;
 
--- 1. TABLA: cuentas (Usuarios registrados en Crear Perfil / Login / Perfil)
 CREATE TABLE IF NOT EXISTS cuentas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombres VARCHAR(100) NOT NULL,
@@ -19,7 +18,6 @@ CREATE TABLE IF NOT EXISTS cuentas (
     INDEX idx_correo (correo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 2. TABLA: configuracion_descanso (Horarios y metas configurados en Configurar Descanso)
 CREATE TABLE IF NOT EXISTS configuracion_descanso (
     id INT AUTO_INCREMENT PRIMARY KEY,
     correo VARCHAR(100) NOT NULL,
@@ -33,7 +31,6 @@ CREATE TABLE IF NOT EXISTS configuracion_descanso (
     CONSTRAINT fk_config_cuentas FOREIGN KEY (correo) REFERENCES cuentas(correo) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 3. TABLA: registros_diarios (Consolidado de sueño para el Dashboard, Historial Mensual y Análisis Semanal)
 CREATE TABLE IF NOT EXISTS registros_diarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     correo VARCHAR(100) NOT NULL,
@@ -57,7 +54,6 @@ CREATE TABLE IF NOT EXISTS registros_diarios (
     CONSTRAINT fk_registros_cuentas FOREIGN KEY (correo) REFERENCES cuentas(correo) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 4. TABLA: monitoreo_sueno (Sesiones nocturnas medidas con el acelerómetro en Monitoreo)
 CREATE TABLE IF NOT EXISTS monitoreo_sueno (
     id INT AUTO_INCREMENT PRIMARY KEY,
     correo VARCHAR(100) NOT NULL,
@@ -76,7 +72,6 @@ CREATE TABLE IF NOT EXISTS monitoreo_sueno (
     CONSTRAINT fk_monitoreo_registros FOREIGN KEY (id_registro) REFERENCES registros_diarios(id) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 5. TABLA: encuestas_diarias (Respuestas del cuestionario matutino con emojis y factores en Registro Diario)
 CREATE TABLE IF NOT EXISTS encuestas_diarias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     correo VARCHAR(100) NOT NULL,
@@ -94,7 +89,6 @@ CREATE TABLE IF NOT EXISTS encuestas_diarias (
     CONSTRAINT fk_encuestas_registros FOREIGN KEY (id_registro) REFERENCES registros_diarios(id) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 6. TABLA: recomendaciones (Consejos de higiene del sueño por las categorías del app: Horarios, Pantallas, Estrés, Cafeína)
 CREATE TABLE IF NOT EXISTS recomendaciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     categoria VARCHAR(50) NOT NULL,
@@ -104,7 +98,6 @@ CREATE TABLE IF NOT EXISTS recomendaciones (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- DATOS INICIALES DE RECOMENDACIONES (Las 4 categorías de la app)
 INSERT IGNORE INTO recomendaciones (id, categoria, titulo, resumen, descripcion) VALUES
 (1, 'Horarios', 'Mantén un horario regular', 'Acuéstate y levántate a la misma hora', 'Mantener una rutina constante ayuda a sincronizar tu reloj biológico y alcanzar fases de sueño profundo con mayor facilidad.'),
 (2, 'Pantallas', 'Filtro de luz azul nocturno', 'Reduce pantallas 45 minutos antes de dormir', 'La luz azul emitida por smartphones retrasa la liberación natural de melatonina, dificultando la conciliación rápida del sueño.'),

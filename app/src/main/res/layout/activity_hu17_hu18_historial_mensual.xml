@@ -13,7 +13,6 @@
         android:layout_above="@+id/bottom_navigation"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +38,6 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <!-- Botón para ver Gráficos Semanales -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_hu17_ir_graficos"
                 style="@style/Widget.Material3.Button.TonalButton"
@@ -71,7 +69,6 @@
                 android:paddingHorizontal="24dp"
                 android:paddingBottom="48dp">
 
-                <!-- Title -->
                 <TextView
                     android:id="@+id/tv_hu17_titulo"
                     android:layout_width="wrap_content"
@@ -83,7 +80,6 @@
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium" />
 
-                <!-- Selector de Mes -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
@@ -135,7 +131,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- CALENDARIO INTERACTIVO ESTILO APPLE HIG (HU-17) -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,7 +146,6 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <!-- Encabezados de días de la semana -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -168,7 +162,6 @@
                             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="D" android:textColor="@color/text_muted" android:textSize="13sp" android:textStyle="bold" android:gravity="center" />
                         </LinearLayout>
 
-                        <!-- Contenedor dinámico de la cuadrícula del mes -->
                         <GridLayout
                             android:id="@+id/grid_calendario_dias"
                             android:layout_width="match_parent"
@@ -178,7 +171,6 @@
                             android:useDefaultMargins="true"
                             tools:minHeight="210dp" />
 
-                        <!-- Leyenda de colores -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -198,7 +190,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- TARJETA DE DETALLE DEL DÍA SELECCIONADO -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_detalle_dia"
                     android:layout_width="match_parent"
@@ -267,7 +258,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Estadísticas del Mes (HU-18) -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -278,7 +268,6 @@
                     android:textStyle="bold"
                     android:letterSpacing="0.04" />
 
-                <!-- Días con mala calidad -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_hu18_mala_calidad"
                     android:layout_width="match_parent"
@@ -330,7 +319,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Uso alto de smartphone -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_hu18_uso_pantalla"
                     android:layout_width="match_parent"

@@ -10,10 +10,9 @@ if (!file_exists($sqlFile)) {
 
 $sqlContent = file_get_contents($sqlFile);
 
-// Ejecutar sentencias SQL
 if ($conn->multi_query($sqlContent)) {
     do {
-        // Almacenar primer juego de resultados
+
         if ($result = $conn->store_result()) {
             $result->free();
         }
@@ -104,4 +103,3 @@ if ($conn->multi_query($sqlContent)) {
     </div>
 </body>
 </html>
-

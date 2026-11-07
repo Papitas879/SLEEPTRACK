@@ -1,5 +1,5 @@
 <?php
-// Generador de datos de prueba para SleepTrack (2 meses: Septiembre y Octubre 2026)
+
 $hash_password = password_hash('Sleep2026!', PASSWORD_BCRYPT);
 
 $cuentas = [
@@ -65,7 +65,6 @@ $cuentas = [
     ]
 ];
 
-// Opciones disponibles en SleepTrack
 $calidades = ['Muy mala', 'Mala', 'Regular', 'Buena', 'Muy buena'];
 $energias = ['Muy baja', 'Baja', 'Media', 'Alta', 'Muy alta'];
 $estres_opts = ['Bajo', 'Medio', 'Alto'];
@@ -76,7 +75,6 @@ $sql_lines = [];
 $sql_lines[] = "USE `sleeptrack`;";
 $sql_lines[] = "SET FOREIGN_KEY_CHECKS = 0;";
 
-// 1. Insertar Cuentas y Configuración
 foreach ($cuentas as $c) {
     $nombres = addslashes($c['nombres']);
     $correo = addslashes($c['correo']);
@@ -97,11 +95,9 @@ foreach ($cuentas as $c) {
                    "ON DUPLICATE KEY UPDATE `hora_dormir` = VALUES(`hora_dormir`), `hora_despertar` = VALUES(`hora_despertar`), `meta_horas` = VALUES(`meta_horas`);";
 }
 
-// 2. Generar datos diarios para Septiembre y Octubre 2026 (01/09/2026 al 30/10/2026)
 $fecha_inicio = new DateTime('2026-09-01');
 $fecha_fin = new DateTime('2026-10-30');
 
-// Semanas de exámenes parciales típicas: 05 al 18 de octubre (mayor estrés y cafeína)
 foreach ($cuentas as $idx => $c) {
     $correo = addslashes($c['correo']);
     $profile = $c['profile'];
@@ -112,25 +108,22 @@ foreach ($cuentas as $idx => $c) {
 
     while ($current <= $fecha_fin) {
         $fecha_str = $current->format('Y-m-d');
-        $dia_semana = (int)$current->format('N'); // 1 = Lunes, 7 = Domingo
+        $dia_semana = (int)$current->format('N');
         $es_fin_semana = ($dia_semana >= 6);
         $dia_mes = (int)$current->format('d');
         $mes = (int)$current->format('m');
 
-        // Simular días que el usuario olvidó o no usó la app (como persona normal ~15% de días faltantes)
-        // Ejemplo: días específicos de descanso o salidas
         $skip_prob = (($dia_mes + $seed_salt) % 9 === 0);
         if ($skip_prob) {
             $current->modify('+1 day');
             continue;
         }
 
-        // Variación según perfil y fecha
         $en_parciales = ($mes == 10 && $dia_mes >= 5 && $dia_mes <= 16);
 
         if ($en_parciales) {
-            // Época de exámenes: duerme menos, más estrés, más cafeína
-            $duracion = rand(330, 420); // 5h30m a 7h
+
+            $duracion = rand(330, 420);
             $calidad_pct = rand(45, 75);
             $eficiencia = rand(70, 85);
             $movimientos = rand(15, 30);
@@ -142,8 +135,8 @@ foreach ($cuentas as $idx => $c) {
             $h_inicio = sprintf("%02d:%02d", rand(0, 1), rand(10, 50));
             $h_fin = sprintf("%02d:%02d", rand(6, 7), rand(0, 30));
         } elseif ($es_fin_semana) {
-            // Fin de semana: descanso más prolongado o irregular
-            $duracion = rand(450, 540); // 7h30m a 9h
+
+            $duracion = rand(450, 540);
             $calidad_pct = rand(78, 96);
             $eficiencia = rand(85, 96);
             $movimientos = rand(5, 16);
@@ -155,8 +148,8 @@ foreach ($cuentas as $idx => $c) {
             $h_inicio = sprintf("%02d:%02d", 0, rand(15, 55));
             $h_fin = sprintf("%02d:%02d", rand(8, 9), rand(0, 45));
         } else {
-            // Días regulares entre semana
-            $duracion = rand(390, 490); // 6h30m a 8h10m
+
+            $duracion = rand(390, 490);
             $calidad_pct = rand(65, 88);
             $eficiencia = rand(78, 92);
             $movimientos = rand(8, 22);
@@ -169,7 +162,6 @@ foreach ($cuentas as $idx => $c) {
             $h_fin = sprintf("%02d:%02d", 6, rand(45, 59));
         }
 
-        // Clasificación de calidad textual
         if ($calidad_pct >= 85) {
             $calidad_texto = 'Muy buena';
         } elseif ($calidad_pct >= 70) {
@@ -184,16 +176,13 @@ foreach ($cuentas as $idx => $c) {
 
         $eventos_pantalla = ($pantallas === 'Más de 60 minutos') ? '3 eventos' : (($pantallas === '30 – 60 minutos') ? '1 evento' : '0 eventos');
 
-        // Insertar en registros_diarios
         $sql_lines[] = "INSERT INTO `registros_diarios` (`correo`, `calidad`, `energia`, `interrupciones`, `estres`, `cafeina`, `pantallas`, `duracion_minutos`, `hora_inicio`, `hora_fin`, `eficiencia`, `calidad_porcentaje`, `movimientos`, `fecha`) " .
                        "VALUES ('$correo', '$calidad_texto', '$energia', '$interrupciones', '$estres', '$cafeina', '$pantallas', $duracion, '$h_inicio', '$h_fin', $eficiencia, $calidad_pct, $movimientos, '$fecha_str') " .
                        "ON DUPLICATE KEY UPDATE `duracion_minutos` = VALUES(`duracion_minutos`), `eficiencia` = VALUES(`eficiencia`), `calidad_porcentaje` = VALUES(`calidad_porcentaje`), `calidad` = VALUES(`calidad`), `energia` = VALUES(`energia`), `estres` = VALUES(`estres`), `cafeina` = VALUES(`cafeina`), `pantallas` = VALUES(`pantallas`);";
 
-        // Insertar en monitoreo_sueno
         $sql_lines[] = "INSERT INTO `monitoreo_sueno` (`correo`, `fecha`, `hora_inicio`, `hora_fin`, `duracion_minutos`, `movimientos`, `eventos_pantalla`, `eficiencia`, `calidad_porcentaje`) " .
                        "VALUES ('$correo', '$fecha_str', '$h_inicio', '$h_fin', $duracion, $movimientos, '$eventos_pantalla', $eficiencia, $calidad_pct);";
 
-        // Insertar en encuestas_diarias
         $sql_lines[] = "INSERT INTO `encuestas_diarias` (`correo`, `fecha`, `calidad_percibida`, `nivel_energia`, `interrupciones`, `nivel_estres`, `consumo_cafeina`, `exposicion_pantallas`) " .
                        "VALUES ('$correo', '$fecha_str', '$calidad_texto', '$energia', '$interrupciones', '$estres', '$cafeina', '$pantallas');";
 

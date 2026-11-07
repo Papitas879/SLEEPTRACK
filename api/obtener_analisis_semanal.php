@@ -11,10 +11,9 @@ $data = json_decode($json, true);
 
 if (!empty($data['correo'])) {
     $correo = trim($data['correo']);
-    $offset_semanas = isset($data['offset_semanas']) ? (int)$data['offset_semanas'] : 0; // 0 = actual, -1 = anterior, etc.
+    $offset_semanas = isset($data['offset_semanas']) ? (int)$data['offset_semanas'] : 0;
 
-    // 1. Obtener meta del usuario
-    $meta_minutos = 480; // 8 horas por defecto
+    $meta_minutos = 480;
     $meta_texto = "8h 00m";
     $h_dormir_obj = "23:00";
     $h_despertar_obj = "07:00";
@@ -37,9 +36,8 @@ if (!empty($data['correo'])) {
         $stmtUser->close();
     }
 
-    // 2. Determinar el rango de la semana (Lunes a Domingo)
     $ts_referencia = strtotime("$offset_semanas week");
-    // En PHP, N: 1 (Lunes) a 7 (Domingo)
+
     $dia_semana = (int)date('N', $ts_referencia);
     $lunes_ts = strtotime("-" . ($dia_semana - 1) . " days", $ts_referencia);
     $domingo_ts = strtotime("+6 days", $lunes_ts);
@@ -49,7 +47,6 @@ if (!empty($data['correo'])) {
 
     $etiqueta_semana = "Semana del " . date('d', $lunes_ts) . " al " . date('d', $domingo_ts) . " de " . obtenerNombreMes(date('n', $domingo_ts));
 
-    // 3. Consultar registros en ese rango de fechas
     $stmt = $conn->prepare("SELECT * FROM registros_diarios WHERE correo = ? AND fecha BETWEEN ? AND ? ORDER BY fecha ASC");
     $registros_map = [];
     if ($stmt) {
@@ -62,7 +59,6 @@ if (!empty($data['correo'])) {
         $stmt->close();
     }
 
-    // 4. Construir arreglo de los 7 días (Lunes a Domingo)
     $nombres_dias = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
     $dias = [];
     $total_minutos = 0;
@@ -75,7 +71,7 @@ if (!empty($data['correo'])) {
     for ($i = 0; $i < 7; $i++) {
         $cur_ts = strtotime("+$i days", $lunes_ts);
         $cur_fecha = date('Y-m-d', $cur_ts);
-        $es_finde = ($i >= 5); // Sáb (5) y Dom (6)
+        $es_finde = ($i >= 5);
 
         $dur_min = 0;
         $cal_pct = 0;
@@ -108,7 +104,7 @@ if (!empty($data['correo'])) {
                 $minutos_semana[] = $dur_min;
             }
         } else {
-            // Sin registro para ese día
+
             $dur_min = 0;
         }
 
@@ -133,13 +129,11 @@ if (!empty($data['correo'])) {
         ];
     }
 
-    // 5. Estadísticas de resumen
     $promedio_min = $dias_con_registro > 0 ? (int)round($total_minutos / $dias_con_registro) : 0;
     $prom_h = floor($promedio_min / 60);
     $prom_m = $promedio_min % 60;
     $promedio_texto = $dias_con_registro > 0 ? "{$prom_h}h " . sprintf("%02dm", $prom_m) : "0h 00m";
 
-    // Promedio semana vs fin de semana
     $habito_sem_texto = "Sin registros";
     $habito_finde_texto = "Sin registros";
     $irregularidad_alta = false;
@@ -186,4 +180,3 @@ function obtenerNombreMes($mesNum) {
 
 $conn->close();
 ?>
-

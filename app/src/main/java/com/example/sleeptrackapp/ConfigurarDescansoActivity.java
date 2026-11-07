@@ -25,10 +25,6 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-/**
- * HU-06: Configurar el descanso y el monitoreo
- * Selector de horario con el reloj predeterminado de Android y guardado seguro.
- */
 public class ConfigurarDescansoActivity extends AppCompatActivity {
 
     View ivVolver;
@@ -48,7 +44,6 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enlace de vistas
         ivVolver = findViewById(R.id.iv_hu04_volver);
         tvHoraDormirVal = findViewById(R.id.tv_hu04_hora_dormir_val);
         tvHoraDespertarVal = findViewById(R.id.tv_hu04_hora_despertar_val);
@@ -68,17 +63,14 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
             }
         });
 
-        // Cargar valores guardados si existen
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
         String savedHoraDormir = prefs.getString("hora_dormir", "23:00");
         String savedHoraDespertar = prefs.getString("hora_despertar", "07:00");
         if (tvHoraDormirVal != null) tvHoraDormirVal.setText(savedHoraDormir);
         if (tvHoraDespertarVal != null) tvHoraDespertarVal.setText(savedHoraDespertar);
 
-        // Actualizar el cálculo inicial de la meta de descanso
         actualizarCalculoDescanso();
 
-        // Selección de hora mediante el reloj predeterminado de Android
         if (tvHoraDormirVal != null) {
             tvHoraDormirVal.setOnClickListener(v -> mostrarSelectorHora(tvHoraDormirVal, true));
             if (tvHoraDormirVal.getParent() instanceof View) {
@@ -92,7 +84,6 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
             }
         }
 
-        // Guardar configuración y avanzar al monitoreo
         if (btnGuardarConfiguracion != null) {
             btnGuardarConfiguracion.setOnClickListener(v -> {
                 String hDormir = tvHoraDormirVal != null ? tvHoraDormirVal.getText().toString() : "23:00";
@@ -158,7 +149,7 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
                         },
                         error -> {
                             btnGuardarConfiguracion.setEnabled(true);
-                            // Si el servidor local no responde, persistir en local
+
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString("hora_dormir", hDormir);
                             editor.putString("hora_despertar", hDespertar);
@@ -198,9 +189,6 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Muestra el reloj predeterminado de Android (TimePickerDialog) en formato 24 horas.
-     */
     private void mostrarSelectorHora(TextView targetView, boolean esHoraDormir) {
         String currentText = targetView.getText().toString();
         int horaDefecto = esHoraDormir ? 23 : 7;
@@ -223,7 +211,7 @@ public class ConfigurarDescansoActivity extends AppCompatActivity {
                 },
                 horaDefecto,
                 minutoDefecto,
-                true // formato 24 horas predeterminado
+                true
         );
 
         timePickerDialog.show();

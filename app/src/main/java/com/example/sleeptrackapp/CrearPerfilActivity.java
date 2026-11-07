@@ -34,10 +34,6 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-/**
- * HU-02: Crear perfil
- * Permite registrar los datos basicos del estudiante.
- */
 public class CrearPerfilActivity extends AppCompatActivity {
 
     View ivVolver;
@@ -57,7 +53,6 @@ public class CrearPerfilActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enlace de vistas
         ivVolver = findViewById(R.id.iv_hu02_volver);
         etNombres = findViewById(R.id.et_hu02_nombres);
         etCorreo = findViewById(R.id.et_hu02_correo);
@@ -67,12 +62,10 @@ public class CrearPerfilActivity extends AppCompatActivity {
         tvCarreraSelector = findViewById(R.id.tv_hu02_carrera_selector);
         btnContinuar = findViewById(R.id.btn_hu02_continuar);
 
-        // Volver atrÃ¡s
         if (ivVolver != null) {
             ivVolver.setOnClickListener(v -> finish());
         }
 
-        // Selectores de diÃ¡logo
         if (tvFechaNacSelector != null) {
             tvFechaNacSelector.setOnClickListener(v -> mostrarDatePicker(tvFechaNacSelector));
         }
@@ -83,10 +76,8 @@ public class CrearPerfilActivity extends AppCompatActivity {
             tvCarreraSelector.setOnClickListener(v -> mostrarDialogoSelector(tvCarreraSelector, R.array.carreras, "Selecciona tu carrera"));
         }
 
-        // Cargar preferencias
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
 
-        // Boton continuar con validacion
         if (btnContinuar != null) {
             btnContinuar.setOnClickListener(v -> {
                 String nombres = etNombres != null ? etNombres.getText().toString().trim() : "";
@@ -102,7 +93,6 @@ public class CrearPerfilActivity extends AppCompatActivity {
                 String universidad = tvUnivSelector != null ? tvUnivSelector.getText().toString() : "";
                 String carrera = tvCarreraSelector != null ? tvCarreraSelector.getText().toString() : "";
 
-                // Llamada de red a XAMPP
                 String url = "http://192.168.3.225/SLEEPTRACKAPP/api/register.php";
 
                 JSONObject requestData = new JSONObject();
@@ -127,7 +117,7 @@ public class CrearPerfilActivity extends AppCompatActivity {
                                 String message = response.getString("message");
 
                                 if (status.equals("success")) {
-                                    // Guardar preferencias del usuario localmente
+
                                     SharedPreferences.Editor editor = prefs.edit();
                                     editor.putString("nombre_usuario", nombres);
                                     editor.putString("correo_usuario", correo);
@@ -138,7 +128,6 @@ public class CrearPerfilActivity extends AppCompatActivity {
 
                                     CustomToast.show(this, "Perfil creado exitosamente", false);
 
-                                    // Navegar a HU-03 (Consentimiento)
                                     Intent intent = new Intent(CrearPerfilActivity.this, ConsentimientoActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -174,7 +163,7 @@ public class CrearPerfilActivity extends AppCompatActivity {
 
     private void mostrarDatePicker(TextView targetView) {
         java.util.Calendar cal = java.util.Calendar.getInstance();
-        int anio = cal.get(java.util.Calendar.YEAR) - 20; // Por defecto alguien de ~20 años
+        int anio = cal.get(java.util.Calendar.YEAR) - 20;
         int mes = cal.get(java.util.Calendar.MONTH);
         int dia = cal.get(java.util.Calendar.DAY_OF_MONTH);
 
@@ -187,5 +176,3 @@ public class CrearPerfilActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 }
-
-

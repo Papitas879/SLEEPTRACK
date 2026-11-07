@@ -11,7 +11,7 @@ $data = json_decode($json, true);
 
 if (!empty($data['correo'])) {
     $correo = trim($data['correo']);
-    $mes = isset($data['mes']) ? (int)$data['mes'] : 0; // 1 to 12
+    $mes = isset($data['mes']) ? (int)$data['mes'] : 0;
     $anio = isset($data['anio']) ? (int)$data['anio'] : 0;
 
     if ($mes > 0 && $anio > 0) {

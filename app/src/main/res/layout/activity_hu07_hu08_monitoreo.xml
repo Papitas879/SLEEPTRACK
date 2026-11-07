@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_monitoreo_root">
 
-    <!-- Ambient Orbital Aura Blobs -->
     <View
         android:layout_width="400dp"
         android:layout_height="400dp"
@@ -30,7 +29,6 @@
             android:paddingTop="20dp"
             android:paddingBottom="36dp">
 
-            <!-- Top Header Navigation & Status Pill -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -49,7 +47,6 @@
                     app:iconTint="@color/primary"
                     app:rippleColor="@color/primary_subtle" />
 
-                <!-- Status Badge Pill (Centered) -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/ll_hu05_badge_estado"
                     android:layout_width="wrap_content"
@@ -88,7 +85,6 @@
                 </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>
 
-            <!-- Screen Title -->
             <TextView
                 android:id="@+id/tv_hu05_titulo"
                 android:layout_width="match_parent"
@@ -101,14 +97,12 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium" />
 
-            <!-- Central Celestial Moon Avatar with Pulse -->
             <FrameLayout
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp">
 
-                <!-- Soft Glow Halo -->
                 <View
                     android:id="@+id/v_hu05_glow_halo"
                     android:layout_width="160dp"
@@ -117,7 +111,6 @@
                     android:background="@drawable/bg_moon_circle"
                     android:backgroundTint="@color/primary" />
 
-                <!-- Lens Circle Container -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
@@ -138,7 +131,6 @@
                 </com.google.android.material.card.MaterialCardView>
             </FrameLayout>
 
-            <!-- Time Metrics Display -->
             <TextView
                 android:id="@+id/tv_hu05_lbl_inicio"
                 android:layout_width="match_parent"
@@ -162,7 +154,6 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium" />
 
-            <!-- Card: Horas Transcurridas en Vivo -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -212,7 +203,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Telemetry Cards -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,7 +218,6 @@
                     android:orientation="vertical"
                     android:paddingVertical="6dp">
 
-                    <!-- Sensor 1: Acelerómetro -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -274,7 +263,6 @@
                         android:layout_marginEnd="20dp"
                         android:background="@color/divider" />
 
-                    <!-- Sensor 2: Eventos de pantalla -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -320,7 +308,6 @@
                         android:layout_marginEnd="20dp"
                         android:background="@color/divider" />
 
-                    <!-- Sensor 3: Privacidad -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -360,7 +347,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Tip Text -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -372,7 +358,6 @@
                 android:textSize="13sp"
                 android:lineSpacingExtra="2dp" />
 
-            <!-- Main Dynamic Toggle Button (Iniciar / Finalizar) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_hu05_accion"
                 android:layout_width="match_parent"

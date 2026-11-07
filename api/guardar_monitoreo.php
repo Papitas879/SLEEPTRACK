@@ -20,7 +20,6 @@ if (!empty($data['correo'])) {
     $movimientos = isset($data['movimientos']) ? (int)$data['movimientos'] : 0;
     $pantallas = !empty($data['pantallas']) ? trim($data['pantallas']) : '0 eventos';
 
-    // Calcular clasificación textual de calidad si no existe
     $calidad_texto = "Regular";
     if ($calidad_porcentaje >= 85) {
         $calidad_texto = "Muy buena";
@@ -34,10 +33,10 @@ if (!empty($data['correo'])) {
         $calidad_texto = "Muy mala";
     }
 
-    $stmt = $conn->prepare("INSERT INTO registros_diarios 
+    $stmt = $conn->prepare("INSERT INTO registros_diarios
         (correo, fecha, duracion_minutos, hora_inicio, hora_fin, eficiencia, calidad_porcentaje, movimientos, calidad, pantallas)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE 
+        ON DUPLICATE KEY UPDATE
             duracion_minutos = VALUES(duracion_minutos),
             hora_inicio = VALUES(hora_inicio),
             hora_fin = VALUES(hora_fin),
@@ -58,8 +57,7 @@ if (!empty($data['correo'])) {
                 }
             }
 
-            // Sincronizar en monitoreo_sueno
-            $stmtMon = $conn->prepare("INSERT INTO monitoreo_sueno 
+            $stmtMon = $conn->prepare("INSERT INTO monitoreo_sueno
                 (correo, id_registro, fecha, hora_inicio, hora_fin, duracion_minutos, movimientos, eventos_pantalla, eficiencia, calidad_porcentaje)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($stmtMon) {
@@ -69,7 +67,7 @@ if (!empty($data['correo'])) {
             }
 
             echo json_encode([
-                "status" => "success", 
+                "status" => "success",
                 "message" => "Sesión de monitoreo guardada correctamente.",
                 "data" => [
                     "correo" => $correo,

@@ -16,7 +16,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- HU-01: Conocer SleepTrack -->
         <activity
             android:name=".BienvenidaActivity"
             android:exported="true">
@@ -26,62 +25,50 @@
             </intent-filter>
         </activity>
 
-        <!-- HU-02: Crear perfil -->
         <activity
             android:name=".CrearPerfilActivity"
             android:exported="false" />
 
-        <!-- HU-03: Iniciar sesión -->
         <activity
             android:name=".IniciarSesionActivity"
             android:exported="false" />
 
-        <!-- HU-05: Aceptar sensores y almacenamiento local -->
         <activity
             android:name=".ConsentimientoActivity"
             android:exported="false" />
 
-        <!-- HU-06: Configurar el descanso y el monitoreo -->
         <activity
             android:name=".ConfigurarDescansoActivity"
             android:exported="false" />
 
-        <!-- HU-07 y HU-08: Iniciar, Consultar y finalizar el monitoreo -->
         <activity
             android:name=".MonitoreoActivity"
             android:exported="false" />
 
-        <!-- HU-09, HU-10 y HU-11: Registro Diario -->
         <activity
             android:name=".RegistroDiarioActivity"
             android:exported="false" />
 
-        <!-- HU-12, HU-13 y HU-14: Resumen del descanso -->
         <activity
             android:name=".ResumenDescansoActivity"
             android:exported="false" />
 
-        <!-- HU-15 y HU-16: Análisis semanal -->
         <activity
             android:name=".AnalisisSemanalActivity"
             android:exported="false" />
 
-        <!-- HU-17 y HU-18: Historial mensual -->
         <activity
             android:name=".HistorialMensualActivity"
             android:exported="false" />
 
-        <!-- HU-19 y HU-20: Recomendaciones, alertas y logros -->
         <activity
             android:name=".RecomendacionesActivity"
             android:exported="false" />
 
-        <!-- HU-21 y HU-22: Perfil, cuenta y cerrar sesión -->
         <activity
             android:name=".PerfilCuentaActivity"
             android:exported="false" />
 
-        <!-- HU-23: Gestionar privacidad y eliminar registros -->
         <activity
             android:name=".PrivacidadDatosActivity"
             android:exported="false" />

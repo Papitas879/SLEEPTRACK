@@ -13,7 +13,6 @@
         android:layout_above="@+id/bottom_navigation"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +38,6 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <!-- Botón para ver Vista Calendario Mensual -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_hu15_ir_calendario"
                 style="@style/Widget.Material3.Button.TonalButton"
@@ -66,7 +64,6 @@
                 android:paddingHorizontal="24dp"
                 android:paddingBottom="48dp">
 
-                <!-- Title -->
                 <TextView
                     android:id="@+id/tv_hu15_titulo"
                     android:layout_width="wrap_content"
@@ -78,7 +75,6 @@
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium" />
 
-                <!-- Selector de Semana -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
@@ -132,7 +128,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- GRÁFICO DE BARRAS SEMANAL ESTILO APPLE HEALTH (HU-15) -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -177,7 +172,6 @@
                                 android:paddingVertical="4dp" />
                         </LinearLayout>
 
-                        <!-- Contenedor de las 7 barras (Lun - Dom) -->
                         <LinearLayout
                             android:id="@+id/ll_barras_contenedor"
                             android:layout_width="match_parent"
@@ -186,7 +180,6 @@
                             android:gravity="bottom"
                             android:weightSum="7">
 
-                            <!-- Día 1: Lun -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -220,7 +213,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 2: Mar -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -254,7 +246,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 3: Mié -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -288,7 +279,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 4: Jue -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -322,7 +312,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 5: Vie -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -356,7 +345,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 6: Sáb -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -390,7 +378,6 @@
                                     android:layout_marginTop="6dp" />
                             </LinearLayout>
 
-                            <!-- Día 7: Dom -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -428,7 +415,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Promedio y Cumplimiento -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -437,7 +423,6 @@
                     android:weightSum="2"
                     android:clipToPadding="false">
 
-                    <!-- Promedio -->
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -485,7 +470,6 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Cumplimiento -->
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -534,7 +518,6 @@
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
-                <!-- Diferencia Fin de Semana (HU-16) -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

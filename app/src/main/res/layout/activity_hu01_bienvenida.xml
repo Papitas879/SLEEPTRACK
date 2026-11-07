@@ -8,7 +8,6 @@
     android:background="@drawable/bg_main_gradient"
     android:clipChildren="false">
 
-    <!-- Ambient Celestial Background Aura Blobs -->
     <View
         android:layout_width="380dp"
         android:layout_height="380dp"
@@ -29,7 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Top Badge / Category Pill -->
     <LinearLayout
         android:id="@+id/ll_hu01_header_tag"
         android:layout_width="wrap_content"
@@ -63,7 +61,6 @@
             android:textAllCaps="true" />
     </LinearLayout>
 
-    <!-- Central Hero Logo with Radial Luminous Aura -->
     <FrameLayout
         android:id="@+id/fl_hu01_illustration"
         android:layout_width="wrap_content"
@@ -74,7 +71,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_hu01_header_tag">
 
-        <!-- Aura luminosa suave de fondo -->
         <View
             android:layout_width="260dp"
             android:layout_height="260dp"
@@ -82,7 +78,6 @@
             android:alpha="0.4"
             android:background="@drawable/bg_moon_circle" />
 
-        <!-- Logo 100% Puro (Luna, Estrellas, Barras y Texto sin borde negro ni caja) -->
         <ImageView
             android:id="@+id/iv_hu01_hero_logo"
             android:layout_width="200dp"
@@ -94,7 +89,6 @@
 
     </FrameLayout>
 
-    <!-- Main Editorial Typography Block -->
     <TextView
         android:id="@+id/tv_hu01_titulo"
         android:layout_width="0dp"
@@ -127,7 +121,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_hu01_titulo" />
 
-    <!-- Action Buttons Block (Modern Onboarding Hierarchy) -->
     <LinearLayout
         android:id="@+id/ll_hu01_actions"
         android:layout_width="match_parent"
@@ -139,7 +132,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Primary Action: Comenzar (Vibrant Gradient Button) -->
         <Button
             android:id="@+id/tv_hu01_comenzar"
             android:layout_width="match_parent"
@@ -154,7 +146,6 @@
             android:elevation="6dp"
             android:stateListAnimator="@null" />
 
-        <!-- Secondary Action: Ya tengo cuenta (Refined Glass Pill Button) -->
         <Button
             android:id="@+id/btn_hu01_ya_tengo_cuenta"
             android:layout_width="match_parent"

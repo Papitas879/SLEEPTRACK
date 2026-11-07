@@ -55,13 +55,11 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
     private Handler timeHandler;
     private Runnable timerRunnable;
 
-    // Acelerómetro nativo
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private int contadorMovimientos = 0;
     private long ultimoMovimientoTime = 0;
 
-    // Monitoreo de encendidos de pantalla (Interacciones nocturnas funcionales)
     private int contadorPantallas = 0;
     private BroadcastReceiver screenReceiver;
 
@@ -89,7 +87,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         tvSensorAccelEstado = findViewById(R.id.tv_hu05_sensor_accel_estado);
         tvSensorPantallaEstado = findViewById(R.id.tv_hu05_sensor_pantalla_estado);
 
-        // Inicializar SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -112,7 +109,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
             });
         }
 
-        // Configurar receptor de encendidos de pantalla
         screenReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -184,7 +180,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         contadorMovimientos = 0;
         contadorPantallas = 0;
 
-        // Registrar Acelerómetro
         if (sensorManager != null && accelerometer != null) {
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -226,7 +221,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
 
         startPulseAnimation();
 
-        // Mantener la pantalla activa en modo descanso para que el acelerómetro no sea suspendido por el sistema
         getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         CustomToast.show(this, "Monitoreo iniciado. ¡Que descanses!", false);
@@ -236,10 +230,8 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         isMonitoring = false;
         long finMillis = System.currentTimeMillis();
 
-        // Liberar flag de pantalla activa
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        // Desregistrar Acelerómetro
         if (sensorManager != null) {
             sensorManager.unregisterListener(this);
         }
@@ -267,7 +259,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         int calidadPorcentaje = SleepTimeUtils.calcularCalidadPorcentaje(duracionMinutos, targetMinutos, contadorMovimientos);
         int eficienciaPorcentaje = SleepTimeUtils.calcularEficiencia(duracionMinutos, contadorMovimientos);
 
-        // Guardar en SharedPreferences locales
         SharedPreferences.Editor editor = prefs.edit();
         editor.putLong("ultimo_monitoreo_fin", finMillis);
         editor.putLong("ultimo_monitoreo_inicio", startTimeMillis);
@@ -280,7 +271,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         editor.putString("ultima_hora_fin", horaFin);
         editor.apply();
 
-        // Enviar a la Base de Datos MySQL XAMPP
         if (!correo.isEmpty()) {
             String url = "http://192.168.3.225/SLEEPTRACKAPP/api/guardar_monitoreo.php";
             JSONObject payload = new JSONObject();
@@ -307,7 +297,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
 
         CustomToast.show(this, "Sesión finalizada: " + duracionMinutos + " min, " + contadorMovimientos + " movs", false);
 
-        // Flujo del Wireframe: Monitoreo finalizado -> Registro Diario de Sensaciones -> Resumen del descanso
         Intent intent = new Intent(MonitoreoActivity.this, RegistroDiarioActivity.class);
         intent.putExtra("desde_monitoreo", true);
         startActivity(intent);
@@ -327,7 +316,6 @@ public class MonitoreoActivity extends AppCompatActivity implements SensorEventL
         float gVector = (float) Math.sqrt(x * x + y * y + z * z);
         float deltaG = Math.abs(gVector - SensorManager.GRAVITY_EARTH);
 
-        // Si se detecta un movimiento durante el sueño (> 2.2 m/s^2)
         if (deltaG > 2.2f) {
             long currentTime = System.currentTimeMillis();
             if (currentTime - ultimoMovimientoTime > 1800) {

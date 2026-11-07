@@ -104,7 +104,6 @@ public class PerfilCuentaActivity extends AppCompatActivity {
         if (tvCorreoVal != null) tvCorreoVal.setText(correo);
         if (tvHorariosVal != null) tvHorariosVal.setText(hDormir + " - " + hDespertar + " (" + metaHoras + ")");
 
-        // Cargar primero métricas de caché local (cero latencia)
         int totalNochesCache = prefs.getInt("total_noches_registradas", -1);
         String promTxtCache = prefs.getString("promedio_duracion_cache", "");
         int promEficienciaCache = prefs.getInt("promedio_eficiencia_cache", -1);
@@ -128,7 +127,6 @@ public class PerfilCuentaActivity extends AppCompatActivity {
             if (tvEficienciaVal != null) tvEficienciaVal.setText(efPct + "%");
         }
 
-        // Consultar estadísticas frescas del backend MySQL en XAMPP
         if (!correo.isEmpty()) {
             String url = "http://192.168.3.225/SLEEPTRACKAPP/api/obtener_perfil.php";
             JSONObject payload = new JSONObject();

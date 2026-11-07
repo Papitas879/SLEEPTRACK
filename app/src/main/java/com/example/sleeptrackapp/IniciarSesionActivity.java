@@ -58,7 +58,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
         if (btnEntrar != null) {
             btnEntrar.setOnClickListener(v -> loginUser());
         }
-        
+
         if (tvOlvidePass != null) {
             tvOlvidePass.setOnClickListener(v -> mostrarDialogoRecuperarPassword());
         }
@@ -88,32 +88,32 @@ public class IniciarSesionActivity extends AppCompatActivity {
                     try {
                         String status = response.getString("status");
                         String message = response.getString("message");
-                        
+
                         if (status.equals("success")) {
                             JSONObject user = response.getJSONObject("user");
-                            
+
                             SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString("nombre_usuario", user.getString("nombres"));
                             editor.putString("correo_usuario", correo);
-                            
+
                             if (user.has("hora_dormir") && !user.isNull("hora_dormir") && !user.getString("hora_dormir").isEmpty()) {
                                 editor.putString("hora_dormir", user.getString("hora_dormir"));
                                 editor.putString("hora_despertar", user.getString("hora_despertar"));
-                                
+
                                 String meta_horas = user.getString("meta_horas");
                                 editor.putString("meta_horas", meta_horas);
                                 editor.putString("duracion_calculada_texto", meta_horas);
-                                
+
                                 int[] dur = SleepTimeUtils.calcularHorasYMinutos(user.getString("hora_dormir"), user.getString("hora_despertar"));
                                 editor.putInt("duracion_minutos_totales", dur[0] * 60 + dur[1]);
                                 editor.putString("duracion_calculada_corto", SleepTimeUtils.formatearDuracionCorto(dur[0], dur[1]));
                             }
-                            
+
                             editor.apply();
 
                             CustomToast.show(IniciarSesionActivity.this, "¡Bienvenido " + user.getString("nombres") + "!", false);
-                            
+
                             Intent intent = new Intent(IniciarSesionActivity.this, ResumenDescansoActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
@@ -202,7 +202,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
                             try {
                                 String status = response.getString("status");
                                 String message = response.getString("message");
-                                
+
                                 if (status.equals("success")) {
                                     CustomToast.show(this, message, false);
                                     dialog.dismiss();

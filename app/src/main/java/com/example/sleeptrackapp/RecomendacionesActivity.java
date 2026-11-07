@@ -14,10 +14,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-/**
- * HU-19: Recomendaciones de higiene del sueño filtrables por categoría con resúmenes claros.
- * HU-20: Alertas dinámicas de privación de sueño, consejos adaptados al uso del celular y logros semanales.
- */
 public class RecomendacionesActivity extends AppCompatActivity {
 
     View ivVolver;
@@ -25,13 +21,11 @@ public class RecomendacionesActivity extends AppCompatActivity {
     TextView tvConsejoPersTitulo, tvConsejoPersResumen, tvConsejoPersDesc;
     TextView tvAlertaDesc, tvLogroDesc;
 
-    // Tarjetas por categoría
     View cardRecPantallas1, cardRecPantallas2;
     View cardRecHorarios1, cardRecHorarios2;
     View cardRecEstres1, cardRecEstres2;
     View cardRecCafeina1, cardRecCafeina2;
 
-    // Chips
     TextView chipTodos, chipHorarios, chipPantallas, chipEstres, chipCafeina;
     private TextView[] chips;
 
@@ -94,7 +88,7 @@ public class RecomendacionesActivity extends AppCompatActivity {
     }
 
     private void filtrarCategoria(int categoriaIndex) {
-        // Actualizar visualmente los chips
+
         for (int i = 0; i < chips.length; i++) {
             if (chips[i] != null) {
                 if (i == categoriaIndex) {
@@ -107,7 +101,6 @@ public class RecomendacionesActivity extends AppCompatActivity {
             }
         }
 
-        // 0: Todos, 1: Horarios, 2: Pantallas, 3: Estrés, 4: Cafeína
         boolean showAll = (categoriaIndex == 0);
         boolean showHorarios = (showAll || categoriaIndex == 1);
         boolean showPantallas = (showAll || categoriaIndex == 2);
@@ -123,7 +116,6 @@ public class RecomendacionesActivity extends AppCompatActivity {
         setVis(cardRecCafeina1, showCafeina);
         setVis(cardRecCafeina2, showCafeina);
 
-        // El consejo personalizado se mantiene visible en "Todos" y en la categoría correspondiente
         if (cardConsejoPersonalizado != null) {
             cardConsejoPersonalizado.setVisibility((showAll || showPantallas) ? View.VISIBLE : View.GONE);
         }
@@ -135,15 +127,11 @@ public class RecomendacionesActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Adapta los consejos y alertas en base a cómo el usuario utiliza el celular y sus registros.
-     */
     private void adaptarConsejosSegunUso() {
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
         int interacciones = prefs.getInt("interacciones_pantalla", 0);
         int calidadPct = prefs.getInt("ultima_calidad_porcentaje", 85);
 
-        // Adaptar consejo personalizado en base a interacciones nocturnas
         if (interacciones > 0) {
             if (tvConsejoPersTitulo != null) tvConsejoPersTitulo.setText("Detectamos " + interacciones + " encendidos de pantalla anoche");
             if (tvConsejoPersResumen != null) tvConsejoPersResumen.setText("⚡ Resumen: Desactiva notificaciones y pon el móvil en 'No Molestar' para evitar microdespertares.");
@@ -154,7 +142,6 @@ public class RecomendacionesActivity extends AppCompatActivity {
             if (tvConsejoPersDesc != null) tvConsejoPersDesc.setText("Continúa dejando tu móvil lejos de la cama para consolidar tu ciclo de descanso.");
         }
 
-        // Adaptar alertas de privación vs logros
         if (calidadPct < 65) {
             if (cardAlertaPreventiva != null) cardAlertaPreventiva.setVisibility(View.VISIBLE);
             if (cardLogroSemanal != null) cardLogroSemanal.setVisibility(View.GONE);
@@ -163,7 +150,6 @@ public class RecomendacionesActivity extends AppCompatActivity {
             if (cardLogroSemanal != null) cardLogroSemanal.setVisibility(View.VISIBLE);
         }
 
-        // Consultar backend si hay conexión para enriquecer datos
         String correo = prefs.getString("correo_usuario", "");
         if (correo.isEmpty()) return;
 

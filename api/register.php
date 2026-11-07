@@ -21,7 +21,6 @@ $fecha_nac = isset($data['fecha_nacimiento']) ? trim($data['fecha_nacimiento']) 
 $universidad = isset($data['universidad']) ? trim($data['universidad']) : "";
 $carrera = isset($data['carrera']) ? trim($data['carrera']) : "";
 
-// Comprobar si el correo ya existe usando prepared statement
 $check_stmt = $conn->prepare("SELECT id FROM cuentas WHERE correo = ?");
 $check_stmt->bind_param("s", $correo);
 $check_stmt->execute();
@@ -34,14 +33,12 @@ if ($check_res && $check_res->num_rows > 0) {
 }
 $check_stmt->close();
 
-// Insertar datos del nuevo perfil
 $stmt = $conn->prepare("INSERT INTO cuentas (nombres, correo, password, fecha_nacimiento, universidad, carrera) VALUES (?, ?, ?, ?, ?, ?)");
 if ($stmt) {
     $stmt->bind_param("ssssss", $nombres, $correo, $password, $fecha_nac, $universidad, $carrera);
     if ($stmt->execute()) {
         $inserted_id = $stmt->insert_id;
 
-        // Inicializar configuración de descanso por defecto para el nuevo usuario
         $conn->query("INSERT IGNORE INTO configuracion_descanso (correo, hora_dormir, hora_despertar, meta_horas) VALUES ('$correo', '23:00', '07:00', '8 horas')");
 
         echo json_encode(["status" => "success", "message" => "Cuenta registrada correctamente.", "id" => $inserted_id]);

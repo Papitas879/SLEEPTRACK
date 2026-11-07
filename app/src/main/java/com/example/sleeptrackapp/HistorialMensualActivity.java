@@ -31,10 +31,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * HU-17: Calendario mensual interactivo con indicadores visuales por día.
- * HU-18: Estadísticas mensuales acumuladas (días de baja calidad, pantallas, etc.).
- */
 public class HistorialMensualActivity extends AppCompatActivity {
 
     View ivVolver, btnIrGraficos;
@@ -42,7 +38,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
     TextView tvMesVal, tvMalaCalidad, tvUsoPantalla;
     GridLayout gridCalendario;
 
-    // Tarjeta de detalle de día
     View cardDetalleDia;
     TextView tvDetalleFecha, tvDetalleCalidad, tvDetalleDuracion, tvDetallePantalla;
 
@@ -180,7 +175,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
         String correo = prefs.getString("correo_usuario", "");
 
-        // Cargar primero datos locales si existen para hoy
         cargarRegistroLocalHoy();
 
         if (correo.isEmpty()) {
@@ -299,7 +293,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
         int tamanoCeldaPx = (int) (42 * densidad);
         int marginPx = (int) (2 * densidad);
 
-        // Espacios vacíos antes del día 1
         for (int i = 0; i < offsetLunes; i++) {
             View empty = new View(this);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -311,7 +304,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
             gridCalendario.addView(empty);
         }
 
-        // Crear celdas de días
         for (int d = 1; d <= maxDiasMes; d++) {
             final int diaNum = d;
             String fechaKey = String.format(Locale.getDefault(), "%04d-%02d-%02d", anioActual, mesActualIndex + 1, diaNum);
@@ -336,7 +328,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
             tvDia.setGravity(Gravity.CENTER);
             tvDia.setTextColor(ContextCompat.getColor(this, R.color.text_primary));
 
-            // Indicador de sueño (Punto de color Apple HIG)
             View dot = new View(this);
             int dotSize = (int) (6 * densidad);
             LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(dotSize, dotSize);
@@ -368,7 +359,6 @@ public class HistorialMensualActivity extends AppCompatActivity {
             gridCalendario.addView(cell);
         }
 
-        // Selección inicial inteligente
         int diaASeleccionar = -1;
         JSONObject regASeleccionar = null;
 
@@ -406,7 +396,7 @@ public class HistorialMensualActivity extends AppCompatActivity {
     }
 
     private void seleccionarDia(int diaNum, JSONObject reg) {
-        // Deseleccionar día anterior
+
         if (diaSeleccionado != -1 && dayViews.containsKey(diaSeleccionado)) {
             LinearLayout prevCell = dayViews.get(diaSeleccionado);
             TextView prevTv = dayTextViews.get(diaSeleccionado);
@@ -421,13 +411,11 @@ public class HistorialMensualActivity extends AppCompatActivity {
 
         diaSeleccionado = diaNum;
 
-        // Obtener el registro más actualizado de la memoria si existe
         String fechaKey = String.format(Locale.getDefault(), "%04d-%02d-%02d", anioActual, mesActualIndex + 1, diaNum);
         if (registrosPorFecha.containsKey(fechaKey)) {
             reg = registrosPorFecha.get(fechaKey);
         }
 
-        // Pintar en morado vibrante el día seleccionado
         if (dayViews.containsKey(diaNum)) {
             LinearLayout curCell = dayViews.get(diaNum);
             TextView curTv = dayTextViews.get(diaNum);

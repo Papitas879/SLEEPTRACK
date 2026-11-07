@@ -94,7 +94,6 @@ public class ResumenDescansoActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("SleepTrackPrefs", MODE_PRIVATE);
         String correo = prefs.getString("correo_usuario", "");
 
-        // 1. Cargar datos locales de caché para respuesta instantánea (Apple HIG Zero-Latency)
         long inicioMillis = prefs.getLong("ultimo_monitoreo_inicio", 0);
         long finMillis = prefs.getLong("ultimo_monitoreo_fin", 0);
         int movimientos = prefs.getInt("movimientos_detectados", 3);
@@ -106,7 +105,6 @@ public class ResumenDescansoActivity extends AppCompatActivity {
             tvMetaEst.setText("Meta: " + metaHorasTexto);
         }
 
-        // Interacciones funcionales con la pantalla
         if (tvInteraccionesVal != null) {
             if (interaccionesPantalla == 0) {
                 tvInteraccionesVal.setText("0 eventos (Excelente)");
@@ -161,7 +159,6 @@ public class ResumenDescansoActivity extends AppCompatActivity {
 
         if (correo.isEmpty()) return;
 
-        // 2. Sincronizar datos frescos desde la BD MySQL en XAMPP
         String url = "http://192.168.3.225/SLEEPTRACKAPP/api/obtener_resumen.php";
         JSONObject requestData = new JSONObject();
         try {
@@ -213,7 +210,6 @@ public class ResumenDescansoActivity extends AppCompatActivity {
                                 tvInterrupcionesVal.setText(data.getString("interrupciones"));
                             }
 
-                            // Pantallas o eventos nocturnos
                             String pan = data.optString("pantallas", "");
                             if (!pan.isEmpty() && tvInteraccionesVal != null) {
                                 tvInteraccionesVal.setText(pan);

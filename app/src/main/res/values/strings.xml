@@ -2,19 +2,16 @@
 <resources>
     <string name="app_name">SleepTrack</string>
 
-    <!-- General -->
     <string name="volver">Volver</string>
     <string name="continuar">Continuar</string>
     <string name="guardar_registro">Guardar registro</string>
     <string name="guardar_configuracion">Guardar configuración</string>
 
-    <!-- HU-01 -->
     <string name="hu01_titulo">Conoce mejor tus\nhábitos de sueño</string>
     <string name="hu01_desc">Registra tu descanso, identifica patrones y\nmejora tu rutina nocturna</string>
     <string name="hu01_comenzar">Comenzar</string>
     <string name="hu01_ya_tengo_cuenta"><u>Ya tengo una cuenta</u></string>
 
-    <!-- HU-02 -->
     <string name="hu02_titulo">Crea tu perfil</string>
     <string name="hu02_subtitulo">Cuéntanos un poco sobre ti</string>
     <string name="hu02_nombres">Nombres completos</string>
@@ -37,12 +34,10 @@
     <string name="hu02_acepto_sensores">Acepto el uso del acelerómetro y sensores del dispositivo para estimar hábitos de sueño</string>
     <string name="hu02_aviso_estimaciones">SleepTrack genera estimaciones y no realiza diagnósticos médicos. Tus registros se almacenan localmente en el dispositivo.</string>
 
-    <!-- HU-04 (Recuperar Password) -->
     <string name="hu04_recuperar_titulo">Recuperar Contraseña</string>
     <string name="hu04_recuperar_cancelar">Cancelar</string>
     <string name="hu04_recuperar_actualizar">Actualizar</string>
 
-    <!-- HU-06 -->
     <string name="hu06_titulo">Configura tu descanso</string>
     <string name="hu06_subtitulo">Personaliza el monitoreo según tu rutina</string>
     <string name="hu06_horarios_objetivo">HORARIOS OBJETIVO</string>
@@ -60,7 +55,6 @@
     <string name="hu06_guardar_local_desc">Sin acceso a internet requerido</string>
     <string name="hu06_aviso_medico">El monitoreo proporciona estimaciones de hábitos de descanso, no diagnósticos médicos.</string>
 
-    <!-- HU-07 -->
     <string name="hu07_titulo">Monitoreo activo</string>
     <string name="hu07_desc">Monitoreo de descanso\nactivo</string>
     <string name="hu07_inicio_monitoreo">Inicio del monitoreo</string>
@@ -72,7 +66,6 @@
     <string name="hu07_datos_locales">Datos guardados localmente</string>
     <string name="hu07_aviso_cerca">Mantén el smartphone cerca durante el descanso para mejores estimaciones</string>
 
-    <!-- HU-12 -->
     <string name="hu12_titulo">Resumen de tu descanso</string>
     <string name="hu12_fecha">Noche del 16 al 17 de septiembre</string>
     <string name="hu12_inicio_est">Inicio estimado\nhora de dormirse</string>
@@ -92,7 +85,6 @@
     <string name="hu12_interaccion_pantalla">Interacción\npantalla</string>
     <string name="hu12_aviso_interacciones">Se registraron varias interacciones con el smartphone durante tu ventana de descanso estimada.</string>
 
-    <!-- HU-20 -->
     <string name="hu20_titulo">Recomendaciones para ti</string>
     <string name="hu20_subtitulo">Basadas en tus registros recientes</string>
 
@@ -169,7 +161,6 @@
     <string name="hu20_rec15_desc">Exponte a la luz del sol poco después de despertar para regular tu reloj circadiano natural.</string>
     <string name="hu20_rec15_tag">Horarios</string>
 
-    <!-- HU-23 -->
     <string name="hu23_titulo">Perfil y configuración</string>
     <string name="hu23_privacidad_datos">Privacidad y datos</string>
     <string name="hu23_eliminar_registros">Eliminar registros locales</string>
@@ -179,7 +170,6 @@
     <string name="hu23_dialog_cancelar">Cancelar</string>
     <string name="hu23_dialog_eliminar">Eliminar</string>
 
-    <!-- Login -->
     <string name="hu03_titulo">Iniciar Sesión</string>
     <string name="hu03_subtitulo">¡Qué bueno verte de nuevo!</string>
     <string name="hu03_entrar">Entrar</string>

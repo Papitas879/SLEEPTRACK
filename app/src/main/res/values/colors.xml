@@ -1,68 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base System Colors -->
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
-    <!-- SleepTrack Day Theme - Background Hierarchy -->
-    <!-- Nivel 1: Fondo luminoso -->
+
     <color name="bg_root">#F7F7FA</color>
     <color name="bg_gradient_start">#E6E8FB</color>
     <color name="bg_gradient_center">#F1F2FC</color>
     <color name="bg_gradient_end">#FFFFFF</color>
-    
-    <!-- Nivel 2: Tarjetas y Superficies Principales -->
+
     <color name="card_surface">#FFFFFF</color>
     <color name="card_stroke">#E3E5F1</color>
-    
-    <!-- Nivel 3: Contenedores Elevados / Pills / Inputs / Chips (más claro) -->
+
     <color name="card_surface_elevated">#FFFFFF</color>
     <color name="card_stroke_elevated">#D0D3E5</color>
-    
-    <!-- SleepTrack Brand Accents -->
+
     <color name="primary">#5B55FE</color>
     <color name="primary_variant">#4841E2</color>
     <color name="primary_dark">#181A38</color>
     <color name="primary_light">#9EA9FF</color>
     <color name="primary_subtle">#E8E9FE</color>
-    
-    <!-- Accent / Highlights -->
+
     <color name="accent">#FF9800</color>
     <color name="accent_star">#FFB300</color>
     <color name="accent_mint">#00B37E</color>
-    
-    <!-- Text Colors (Jerarquía clara en fondo claro) -->
+
     <color name="text_primary">#1A1D33</color>
     <color name="text_secondary">#5B55FE</color>
     <color name="text_muted">#687192</color>
     <color name="text_subdued">#A0A7C0</color>
-    
-    <!-- Semantic Colors (Modo Claro) -->
-    <!-- Success / Mint -->
+
     <color name="success">#00B37E</color>
     <color name="success_bg">#E6F8F3</color>
     <color name="success_stroke">#BFF0E2</color>
     <color name="success_light">#E6F8F3</color>
-    
-    <!-- Warning / Amber -->
+
     <color name="warning">#FF9800</color>
     <color name="warning_bg">#FFF5E6</color>
     <color name="warning_stroke">#FFE0B2</color>
     <color name="warning_light">#FFF5E6</color>
-    
-    <!-- Error / Danger / Finish -->
+
     <color name="error">#E83D55</color>
     <color name="error_bg">#FDE8EA</color>
     <color name="error_stroke">#F8BBD0</color>
     <color name="error_light">#FDE8EA</color>
-    
-    <!-- UI Elements -->
+
     <color name="divider">#E3E5F1</color>
     <color name="chip_bg">#F1F3FB</color>
     <color name="chip_border">#DCE0F2</color>
     <color name="chip_text">#5B55FE</color>
-    
-    <!-- Legacy Compatibility Aliases -->
+
     <color name="background_light">#F7F7FA</color>
     <color name="background_dark">#F7F7FA</color>
     <color name="primary_background">#F7F7FA</color>

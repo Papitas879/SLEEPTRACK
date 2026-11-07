@@ -11,16 +11,15 @@ $data = json_decode($json, true);
 
 if (!empty($data['correo'])) {
     $correo = trim($data['correo']);
-    $tipo = isset($data['tipo']) ? trim($data['tipo']) : "registros"; // "registros" o "cuenta"
+    $tipo = isset($data['tipo']) ? trim($data['tipo']) : "registros";
 
     if ($tipo === "cuenta") {
-        // Eliminar registros diarios primero (integridad referencial)
+
         $stmtReg = $conn->prepare("DELETE FROM registros_diarios WHERE correo = ?");
         $stmtReg->bind_param("s", $correo);
         $stmtReg->execute();
         $stmtReg->close();
 
-        // Eliminar cuenta
         $stmtUser = $conn->prepare("DELETE FROM cuentas WHERE correo = ?");
         $stmtUser->bind_param("s", $correo);
         if ($stmtUser->execute()) {
@@ -30,7 +29,7 @@ if (!empty($data['correo'])) {
         }
         $stmtUser->close();
     } else {
-        // Eliminar solo registros diarios de historial
+
         $stmtReg = $conn->prepare("DELETE FROM registros_diarios WHERE correo = ?");
         $stmtReg->bind_param("s", $correo);
         if ($stmtReg->execute()) {
@@ -47,4 +46,3 @@ if (!empty($data['correo'])) {
 
 $conn->close();
 ?>
-

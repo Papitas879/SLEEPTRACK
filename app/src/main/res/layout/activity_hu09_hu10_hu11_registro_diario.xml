@@ -12,7 +12,6 @@
         android:layout_above="@+id/bottom_navigation"
         android:orientation="vertical">
 
-        <!-- Top Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +66,6 @@
                     android:textSize="15sp"
                     android:layout_marginBottom="20dp"/>
 
-                <!-- CALIDAD DEL DESCANSO PERCIBIDA (HU-09) -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,7 +98,6 @@
                             android:orientation="horizontal"
                             android:weightSum="5">
 
-                            <!-- Option 1: Muy mala -->
                             <LinearLayout
                                 android:id="@+id/opt_calidad_1"
                                 android:layout_width="0dp"
@@ -129,7 +126,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 2: Mala -->
                             <LinearLayout
                                 android:id="@+id/opt_calidad_2"
                                 android:layout_width="0dp"
@@ -158,7 +154,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 3: Regular (Selected by default) -->
                             <LinearLayout
                                 android:id="@+id/opt_calidad_3"
                                 android:layout_width="0dp"
@@ -188,7 +183,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 4: Buena -->
                             <LinearLayout
                                 android:id="@+id/opt_calidad_4"
                                 android:layout_width="0dp"
@@ -217,7 +211,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 5: Excelente -->
                             <LinearLayout
                                 android:id="@+id/opt_calidad_5"
                                 android:layout_width="0dp"
@@ -249,7 +242,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- NIVEL DE ENERGÍA AL DESPERTAR -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -282,7 +274,6 @@
                             android:orientation="horizontal"
                             android:weightSum="5">
 
-                            <!-- Option 1: Agotado -->
                             <LinearLayout
                                 android:id="@+id/opt_energia_1"
                                 android:layout_width="0dp"
@@ -311,7 +302,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 2: Con sueño -->
                             <LinearLayout
                                 android:id="@+id/opt_energia_2"
                                 android:layout_width="0dp"
@@ -340,7 +330,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 3: Normal (Selected by default) -->
                             <LinearLayout
                                 android:id="@+id/opt_energia_3"
                                 android:layout_width="0dp"
@@ -370,7 +359,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 4: Con energía -->
                             <LinearLayout
                                 android:id="@+id/opt_energia_4"
                                 android:layout_width="0dp"
@@ -399,7 +387,6 @@
                                     android:fontFamily="sans-serif-medium" />
                             </LinearLayout>
 
-                            <!-- Option 5: Al 100% -->
                             <LinearLayout
                                 android:id="@+id/opt_energia_5"
                                 android:layout_width="0dp"
@@ -431,7 +418,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- INTERRUPCIONES RECORDADAS -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -472,7 +458,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- ESTRÉS ACADÉMICO -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -510,7 +495,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- CONSUMO DE CAFEÍNA AYER -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -540,7 +524,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <!-- Option 1: No consumí -->
                             <TextView
                                 android:id="@+id/opt_caf_1"
                                 android:layout_width="match_parent"
@@ -553,7 +536,6 @@
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"/>
 
-                            <!-- Option 2: Sí, una vez -->
                             <TextView
                                 android:id="@+id/opt_caf_2"
                                 android:layout_width="match_parent"
@@ -566,7 +548,6 @@
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"/>
 
-                            <!-- Option 3: Sí, más de una vez -->
                             <TextView
                                 android:id="@+id/opt_caf_3"
                                 android:layout_width="match_parent"
@@ -581,7 +562,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- USO DE PANTALLAS ANTES DE DORMIR -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -611,7 +591,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <!-- Option 1: Menos de 30 minutos -->
                             <TextView
                                 android:id="@+id/opt_pan_1"
                                 android:layout_width="match_parent"
@@ -624,7 +603,6 @@
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"/>
 
-                            <!-- Option 2: 30 – 60 minutos (Selected) -->
                             <TextView
                                 android:id="@+id/opt_pan_2"
                                 android:layout_width="match_parent"
@@ -637,7 +615,6 @@
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"/>
 
-                            <!-- Option 3: Más de 60 minutos -->
                             <TextView
                                 android:id="@+id/opt_pan_3"
                                 android:layout_width="match_parent"
@@ -652,7 +629,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Guardar registro Button (HU-11) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_hu11_guardar"
                     android:layout_width="match_parent"
