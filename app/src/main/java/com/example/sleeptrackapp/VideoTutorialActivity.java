@@ -1,10 +1,10 @@
 package com.example.sleeptrackapp;
 
+import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -39,18 +39,22 @@ public class VideoTutorialActivity extends AppCompatActivity {
         btnContinuar = findViewById(R.id.btn_continuar_tutorial);
         btnRepetir = findViewById(R.id.btn_repetir_tutorial);
 
+        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (am != null) {
+            am.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+        }
+
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tutorial_sleeptrack);
         videoView.setVideoURI(videoUri);
 
         videoView.setOnPreparedListener(mp -> {
             mp.setLooping(false);
+            mp.setVolume(1.0f, 1.0f);
             videoView.start();
         });
 
         videoView.setOnCompletionListener(mp -> {
-            if (btnContinuar != null) {
-                btnContinuar.setText("Continuar  →");
-            }
+            irACrearPerfil();
         });
 
         if (btnSaltar != null) {
